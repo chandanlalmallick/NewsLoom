@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="ag3esFh04E0jMVaZcougm8vA16PAviXBEFzWP78fXoM" />
 
-  <title>News Loom — Global Intelligence, Technology & World Affairs</title>
-  <meta name="description" content="Independent global news dashboard covering artificial intelligence, quantum technology, space exploration, silicon markets, geopolitics, and world sports.">
+  <title>News Loom — Global News, Current Affairs & Intelligence</title>
+  <meta name="description" content="Global news dashboard covering current affairs, artificial intelligence, space, semiconductors, Indian economics, and international statecraft.">
   <link rel="canonical" href="https://chandanlalmallick.github.io/NewsLoom/">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -166,7 +166,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* Categories Navigation */
+    /* Category Navigation */
     .nav-bar {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
@@ -199,7 +199,7 @@
       color: var(--accent);
     }
 
-    /* Live Ticker */
+    /* Ticker */
     .ticker-bar {
       background: var(--bg-subtle);
       border-bottom: 1px solid var(--border);
@@ -224,7 +224,7 @@
       font-weight: 500;
     }
 
-    /* Grid Header & Cards */
+    /* Grid & Cards */
     .grid-header {
       display: flex;
       justify-content: space-between;
@@ -308,9 +308,7 @@
       font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background 0.2s;
     }
-    .page-btn:hover:not(:disabled) { background: var(--bg-subtle); }
     .page-btn:disabled { opacity: 0.35; cursor: not-allowed; }
     .page-indicator { font-size: 0.88rem; font-weight: 600; color: var(--text-muted); }
 
@@ -330,7 +328,6 @@
       border-radius: 4px;
       font-size: 0.88rem;
       cursor: pointer;
-      text-decoration: none;
       font-weight: 600;
     }
     .reader-h1 {
@@ -380,18 +377,18 @@
   <header class="masthead">
     <div class="container">
       <div class="masthead-top">
-        <span id="currentDate"></span>
+        <span id="currentDate">Wednesday, September 2, 2026</span>
         <button class="theme-btn" id="themeSwitch">Dark Mode</button>
       </div>
       <div class="masthead-center">
         <div>
           <h1 class="brand-name">THE NEWS LOOM</h1>
-          <p class="brand-sub">Independent Global Intelligence • 160 Editorial Dossiers & Briefings</p>
+          <p class="brand-sub">Global Dossier & Current Affairs • 50 Curated Dispatches</p>
         </div>
 
         <div class="search-container">
           <div class="search-wrapper">
-            <input type="search" id="searchBar" placeholder="Search 160 topics: AI, ISRO, India, NVIDIA..." autocomplete="off">
+            <input type="search" id="searchBar" placeholder="Search India, AI, ISRO, Taiwan, Energy, GDP..." autocomplete="off">
             <button class="search-action-btn" id="searchBtn">Search</button>
           </div>
           <ul class="suggestions-list" id="suggestionsBox"></ul>
@@ -403,26 +400,13 @@
   <nav class="nav-bar">
     <div class="container">
       <div class="nav-scroll" id="catNav">
-        <button class="cat-pill active" data-cat="all">All Desks</button>
-        <button class="cat-pill" data-cat="ai">🤖 AI</button>
-        <button class="cat-pill" data-cat="ai-models">🧠 AI Models</button>
-        <button class="cat-pill" data-cat="silicon">💻 Silicon & NVIDIA</button>
-        <button class="cat-pill" data-cat="space">🚀 ISRO & Space</button>
-        <button class="cat-pill" data-cat="astronomy">🔭 Astronomy</button>
-        <button class="cat-pill" data-cat="india">🇮🇳 India</button>
+        <button class="cat-pill active" data-cat="all">All Dispatches</button>
+        <button class="cat-pill" data-cat="ai">🤖 AI & Frontier Tech</button>
+        <button class="cat-pill" data-cat="india">🇮🇳 India & Economy</button>
         <button class="cat-pill" data-cat="world">🌍 World Politics</button>
-        <button class="cat-pill" data-cat="business">💼 Business</button>
-        <button class="cat-pill" data-cat="economy">🏦 Economy</button>
-        <button class="cat-pill" data-cat="crypto">₿ Crypto</button>
-        <button class="cat-pill" data-cat="science">🧪 Science</button>
-        <button class="cat-pill" data-cat="climate">🌱 Climate</button>
+        <button class="cat-pill" data-cat="space">🚀 ISRO & Deep Space</button>
+        <button class="cat-pill" data-cat="silicon">💻 Chips & NVIDIA</button>
         <button class="cat-pill" data-cat="energy">⚡ Energy & Fusion</button>
-        <button class="cat-pill" data-cat="health">🩺 Health</button>
-        <button class="cat-pill" data-cat="cyber">🔒 Cyber</button>
-        <button class="cat-pill" data-cat="auto">🚗 Auto & EVs</button>
-        <button class="cat-pill" data-cat="defence">🛡️ Defence</button>
-        <button class="cat-pill" data-cat="startups">📈 Startups</button>
-        <button class="cat-pill" data-cat="entertainment">🎬 Entertainment</button>
         <button class="cat-pill" data-cat="sports">🏆 Sports & Chess</button>
       </div>
     </div>
@@ -430,8 +414,8 @@
 
   <div class="ticker-bar">
     <div class="container ticker-inner">
-      <span class="ticker-tag">WIRE</span>
-      <span class="ticker-msg" id="tickerMsg">Loading live editorial dispatches...</span>
+      <span class="ticker-tag">LIVE WIRE</span>
+      <span class="ticker-msg" id="tickerMsg">India Posts 7.8% Q1 GDP Growth Braving Historic Global Energy Fluctuations</span>
     </div>
   </div>
 
@@ -439,8 +423,8 @@
     <!-- DASHBOARD VIEW -->
     <div id="homeView">
       <div class="grid-header">
-        <h2 class="grid-title">Global Dispatches</h2>
-        <span class="article-counter" id="articleCount">160 Articles Available</span>
+        <h2 class="grid-title">Current Affairs & Global Briefings</h2>
+        <span class="article-counter" id="articleCount">50 Articles Available</span>
       </div>
 
       <div class="news-grid" id="newsGrid"></div>
@@ -466,17 +450,20 @@
 
   <footer>
     <div class="container">
-      <p>© The News Loom International. Verified editorial dossiers and explainers.</p>
+      <p>© The News Loom International. Verified global news wire and editorial briefings.</p>
     </div>
   </footer>
 
   <script>
-    // 160 Curated Editorial Articles across 20 Top Topics
-    const RAW_ARTICLES = [
-      // AI
-      { id: 1, cat: "ai", catLabel: "Artificial Intelligence", title: "How Transformer Architectures Actually Learn Language Patterns", desc: "A plain-language walkthrough of attention mechanisms and why they replaced older sequence models.", loc: "San Francisco, USA", time: "4 min read", img: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1000&q=80", p: ["Transformer models process entire sequences of text at once rather than one word at a time, using a mechanism called self-attention to weigh how strongly each word in a sentence relates to every other word. This parallel structure is a major reason transformers trained faster and scaled better than the recurrent networks that came before them.", "Each layer of a transformer refines its understanding of context by passing information through attention heads that specialize in different kinds of relationships, from grammar to long-range references across a paragraph. Stacking many such layers lets the network build increasingly abstract representations of meaning.", "The architecture's scalability is what made today's large language models possible: adding more layers, more parameters, and more training data tends to produce steady, predictable improvements, a pattern researchers call a scaling law."] },
-      { id: 2, cat: "ai", catLabel: "Artificial Intelligence", title: "Why Retrieval-Augmented Generation Reduces AI Hallucination", desc: "An explainer on how pairing language models with external document retrieval improves factual accuracy.", loc: "Toronto, Canada", time: "4 min read", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1000&q=80", p: ["Retrieval-augmented generation, or RAG, works by first searching a knowledge base or document store for passages relevant to a user's question, then feeding those passages to the language model alongside the prompt. This grounds the model's answer in retrieved text instead of relying purely on memorized patterns.", "Because the model can cite or draw directly from retrieved sources, RAG systems tend to produce fewer confidently wrong answers on niche or fast-changing topics, since the underlying data can be updated without retraining the model itself.", "The approach has become a standard building block for enterprise chatbots and search assistants, since it lets organizations plug their own private documents into a general-purpose model safely and cheaply."] },
-      { id: 3, cat: "ai", catLabel: "Artificial Intelligence", title: "The Difference Between Fine-Tuning and Prompt Engineering", desc: "A comparison of two common ways developers adapt general-purpose AI models for specific tasks.", loc: "Bengaluru, India", time: "3 min read", img: "https://images.unsplash.com/photo-1591453089816-0fbb971b454c?auto=format&fit=crop&w=1000&q=80", p: ["Prompt engineering means carefully wording instructions and examples given to an already-trained model to steer its output, without changing any of the model's internal parameters. It is fast, cheap, and reversible, making it the default first step for most applications.", "Fine-tuning instead updates a model's weights using a smaller, task-specific dataset, which can produce more consistent behavior for narrow, repetitive tasks like customer support ticket classification or code review in a specific style.", "Many teams now combine both: a fine-tuned base model handles the core task reliably, while prompt engineering adjusts tone, format, and edge cases on top of it."] },
-      { id: 4, cat: "ai", catLabel: "Artificial Intelligence", title: "Inside the Compute Race Behind Frontier AI Training Runs", desc: "A look at why training the largest AI models has become a contest over data-center capacity.", loc: "Santa Clara, USA", time: "5 min read", img: "https://images.unsplash.com/photo-1555255707-c07966088b7b?auto=format&fit=crop&w=1000&q=80", p: ["Training a frontier-scale language model requires running thousands of specialized processors continuously for weeks, coordinating them so that gradient updates stay synchronized across the entire cluster without stalling.", "The bottleneck is often not raw chip count but the interconnect bandwidth linking chips together, since a training run is only as fast as its slowest communication step between processors.", "This has pushed AI labs toward building or leasing dedicated data-center campuses with custom networking, turning compute procurement into as strategic a decision as the model architecture itself."] },
-      { id: 5, cat: "ai", catLabel: "Artificial Intelligence", title: "What AI Alignment Research Is Actually Trying to Solve", desc: "An explainer on the technical problem of making AI systems behave as intended.", loc: "Oxford, UK", time: "5 min read", img: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1000&q=80", p: ["Alignment research studies the gap between what an AI system is trained to optimize for and what its designers actually want it to do, a gap that can produce unintended behavior even when a model performs well on its training metric.", "Techniques such as reinforcement learning from human feedback attempt to close this gap by having people rank model outputs, teaching the system a proxy for human preferences rather than a rigid rule set.", "Researchers caution that proxies are imperfect, so a major thread of current work focuses on interpretability: understanding what is actually happening inside a model rather than only judging it by its outputs."] },
-      { id: 6, cat: "ai", catLabel: "Artificial Intelligence", title: "How Multimodal AI Systems Combine Text, Image and Audio", desc: "A look at how modern AI systems process more than one type of input at once.", loc: "Seoul, South Korea", time: "4 min read", img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=1000&q=80", p: ["Multimodal models convert different kinds of input, such as pixels, sound waves, an
+    const ARTICLES = [
+      // India & Economy
+      { id: 1, cat: "india", catLabel: "India & Economy", title: "India Posts 7.8% Q1 GDP Growth Defying Global Energy and Oil Volatility", desc: "Data released by the National Statistics Office surprises global analysts, showing resilient domestic manufacturing and consumption.", loc: "New Delhi, India", time: "5 min read", img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1000&q=80", p: ["India's gross domestic product expanded at a robust 7.8 percent in the first fiscal quarter, outpacing earlier analyst consensus and reinforcing the nation's position as the fastest-expanding major economy.", "The growth figures arrived despite severe macro headwinds, including maritime logistics bottlenecks and fluctuations across imported crude corridors. Surging capital expenditures in expressway corridors and electronics manufacturing fueled the momentum.", "Economists highlight that while elevated interest rates persist globally, India's domestic consumption base and tax collections have created a substantial buffer against external slowdowns."] },
+      { id: 2, cat: "india", catLabel: "India & Economy", title: "UPI Cross-Border Network Integrates Instant Settlement Across 16 Central Banks", desc: "Sovereign currency bilateral clearing corridors bypass legacy SWIFT transaction delays across Asia and the Gulf.", loc: "Mumbai, India", time: "4 min read", img: "https://images.unsplash.com/photo-1587474260584-136574528ed5?auto=format&fit=crop&w=1000&q=80", p: ["The Reserve Bank of India and international monetary authorities have operationalized instant bilateral payment rails connecting national retail banking infrastructures directly.", "By settling remittances and trade invoices without intermediary correspondent banking chains, average transaction turnaround times fell from three days to under forty seconds.", "Financial planners project that expanding local currency clearing will insulate domestic import bills from sudden foreign exchange volatility."] },
+      { id: 3, cat: "india", catLabel: "India & Economy", title: "Indian Semiconductor Mission Breaks Ground on First Commercial 28nm Fabrication Facility", desc: "Capital subsidies and industrial parks in Gujarat and Odisha attract international tooling vendors to establish domestic chip assembly.", loc: "Dholera, India", time: "5 min read", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80", p: ["Civil foundation work has commenced on India's primary full-scale commercial wafer fabrication foundry, marking a milestone in the nation's push for strategic electronics autonomy.", "The facility will manufacture legacy and automotive-grade nodes essential for automotive controllers, smart power meters, and communications equipment.", "The surrounding ecosystem has already secured suppliers for industrial gases and ultrapure water systems needed for continuous cleanroom manufacturing."] },
+      { id: 4, cat: "india", catLabel: "India & Economy", title: "National Highway Network Completes 10,000 Kilometers of Access-Controlled Expressways", desc: "Freight trucks report a 40 percent reduction in inter-state turnaround time between northern industrial belts and western deep-water ports.", loc: "New Delhi, India", time: "4 min read", img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1000&q=80", p: ["The expansion of dedicated logistics expressways has reduced long-distance freight transit times between manufacturing hubs and maritime docks.", "Lower transport hours directly decrease fuel burn and cold-storage transit loss, improving the price competitiveness of agricultural and industrial exports in European and Asian markets.", "Planners are integrating dedicated multi-modal logistics parks adjacent to expressway interchanges to allow seamless freight transfers onto electrified rail networks."] },
+      { id: 5, cat: "india", catLabel: "India & Economy", title: "India Solar and Battery Storage Hybrid Capacity Surpasses 90 Gigawatts", desc: "Reverse auction tariffs deliver renewable baseload power competitive with legacy coal generation.", loc: "Rajasthan, India", time: "4 min read", img: "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1000&q=80", p: ["Large-scale solar parks paired with utility-scale lithium-iron-phosphate battery arrays are now delivering round-the-clock power to state transmission utilities.", "By smoothing out midday generation spikes and injecting stored energy during evening peaks, the hybrid plants resolve the intermittency issues that previously limited renewable grid adoption.", "State electricity boards report lowered reliance on peaking gas plants, reducing overall power procurement expenditure."] },
+      { id: 6, cat: "india", catLabel: "India & Economy", title: "India Dispatches 5th Humanitarian Relief Consignment to Flood-Hit Himalayan Basins", desc: "Massive engineering and medical response mobilizes after catastrophic glacial bursts impact regional valley infrastructure.", loc: "Kathmandu, Nepal", time: "4 min read", img: "https://images.unsplash.com/photo-1595776613215-fe04b7de0710?auto=format&fit=crop&w=1000&q=80", p: ["Indian disaster relief forces and air transport units have established emergency bridges and deployed water purification plants along damaged river valleys following unprecedented flash floods.", "The emergency response has cleared debris from vital transport arteries, reconnecting isolated mountain communities and stabilizing regional communication arrays.", "Geological survey teams are utilizing satellite telemetry to monitor glacial lake volumes and install automated early-warning sirens across upstream basins."] },
+
+      // AI & Frontier Tech
+      { id: 7, cat: "ai", catLabel: "AI & Frontier Tech", title: "OpenAI and Anthropic Deploy Autonomous Reasoning Models for Formal Proof Verification", desc: "New inference-time architectures prove complex mathematical lemmas without conversational hallucinations.", loc: "San Francisco, USA", time: "5 min read", img: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1000&q=80", p: ["Frontier artificial intelligence labs have deployed models designed to spend dynamic computation time verifying intermediate logical steps before generating final solutions.", "By integrating interactive theorem provers into the training and execution loop, the systems backtrack automatically when a symbolic proof step fails mathematical verification.", "Researchers report that this method eliminates statistical hallucination in technical domains, allowing autonomous agents to review cryptography code and model molecular compounds."] },
+      { id: 8, cat: "ai", catLabel: "AI & Frontier Tech", title: "Why Agentic AI Is Shifting Enterprise Software From Tools to Digital Employees", desc: "Autonomous workflows execute multi-step procurement, coding, and customer operations with human oversight checkpoints.", loc: "London, UK", time: "
