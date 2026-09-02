@@ -1,162 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="ag3esFh04E0jMVaZcougm8vA16PAviXBEFzWP78fXoM" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="ag3esFh04E0jMVaZcougm8vA16PAviXBEFzWP78fXoM" />
 
-  <title>News Loom — Global Intelligence, Technology & Science</title>
-  <meta name="description" content="Independent global news dashboard covering artificial intelligence, quantum breakthroughs, world diplomacy, green energy, space exploration, and macroeconomic shifts.">
+  <title>News Loom — Global Intelligence, Frontier Tech & World Affairs</title>
+  <meta name="description" content="Independent global news dashboard covering artificial intelligence, quantum breakthroughs, energy transitions, deep space discovery, and geopolitics.">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <meta name="author" content="News Loom Editorial">
-
   <link rel="canonical" href="https://chandanlalmallick.github.io/NewsLoom/">
-  <meta name="theme-color" content="#0a0a0c">
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="News Loom — Global Intelligence & Analysis">
-  <meta property="og:description" content="In-depth reporting on global shifts in AI, quantum technology, energy transitions, and geopolitics.">
-  <meta property="og:url" content="https://chandanlalmallick.github.io/NewsLoom/">
-  <meta property="og:image" content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80">
-
-  <link rel="stylesheet" href="style.css">
+  <!-- Fonts & Layout -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-brand: 'Cinzel', serif;
+
+      --bg-base: #f9f8f5;
+      --bg-card: #ffffff;
+      --bg-subtle: #f0eee9;
+      --text-main: #141518;
+      --text-muted: #5e626a;
+      --border: #dfddd6;
+      --accent: #b82323;
+      --accent-hover: #911919;
+      --shadow: 0 4px 18px rgba(0,0,0,0.06);
+    }
+
+    [data-theme="dark"] {
+      --bg-base: #0f1013;
+      --bg-card: #16181d;
+      --bg-subtle: #20232a;
+      --text-main: #f2f4f8;
+      --text-muted: #9aa0ac;
+      --border: #292d36;
+      --accent: #e63946;
+      --accent-hover: #ff5263;
+      --shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Masthead */
+    .masthead {
+      background: var(--bg-card);
+      border-bottom: 2px solid var(--text-main);
+      padding: 14px 0 20px;
+    }
+    .masthead-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+    }
+    .theme-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 10px;
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+    .masthead-center {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 18px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand-name {
+      font-family: var(--font-brand);
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+    }
+    .brand-sub {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Search */
+    .search-wrapper {
+      display: flex;
+      align-items: center;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      width: 100%;
+      max-width: 320px;
+    }
+    .search-wrapper input {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text-main);
+      font-size: 0.88rem;
+      width: 100%;
+      margin-left: 6px;
+    }
+
+    /* Categories */
+    .nav-bar {
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .nav-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 10px 0;
+      scrollbar-width: none;
+    }
+    .nav-scroll::-webkit-scrollbar { display: none; }
+    .cat-pill {
+      background: transparent;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .cat-pill.active, .cat-pill:hover {
+      background: var(--bg-subtle);
+      color: var(--accent);
+    }
+
+    /* Featured Lead */
+    .lead-box {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-top: 24px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+    .lead-box:hover { box-shadow: var(--shadow); }
+    .lead-img {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .lead-text {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tag {
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .lead-headline {
+      font-family: var(--font-serif);
+      font-size: clamp(1.4rem, 2.2vw, 2rem);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+    .lead-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+    .meta { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* Secondary Grid */
+    .grid-section-title {
+      font-family: var(--font-brand);
+      font-size: 1.2rem;
+      margin: 36px 0 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .news-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .news-card:hover { transform: translateY(-3px); }
+    .card-img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      line-height: 1.35;
+      margin: 6px 0 10px;
+    }
+    .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex-grow: 1;
+      margin-bottom: 12px;
+    }
+
+    /* Article Reader Mode */
+    #readerView {
+      max-width: 780px;
+      margin: 30px auto;
+      display: none;
+    }
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .reader-h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      line-height: 1.2;
+      margin: 10px 0 14px;
+    }
+    .reader-lead-text {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .reader-img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    .reader-body-copy {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      line-height: 1.8;
+    }
+    .reader-body-copy p { margin-bottom: 20px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      padding: 40px 0;
+      margin-top: 60px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .lead-box { grid-template-columns: 1fr; }
+      .search-wrapper { max-width: 100%; }
+    }
+  </style>
 </head>
 
 <body data-theme="light">
 
-<header class="masthead">
-  <div class="wrap">
-    <div class="masthead-top">
-      <div class="masthead-edition">
-        <span id="todayDate"></span>
-        <span class="edition-pill">International Edition</span>
+  <header class="masthead">
+    <div class="container">
+      <div class="masthead-top">
+        <span id="currentDate"></span>
+        <button class="theme-btn" id="themeSwitch">Dark Mode</button>
       </div>
-      <div class="top-controls">
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle visual theme">
-          <span class="toggle-icon">◐</span> Mode
-        </button>
-      </div>
-    </div>
-
-    <div class="masthead-main">
-      <div class="brand">
-        <a href="./" class="brand-link">
-          <span class="brand-title">THE NEWS LOOM</span>
-        </a>
-        <p class="tagline">Independent Global Dossier • Technology, Science & Statecraft</p>
-      </div>
-
-      <div class="search-area">
-        <div class="search-box">
-          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input
-            type="search"
-            id="searchInput"
-            class="search-input"
-            placeholder="Search briefings: AI, fusion, semiconductors, space..."
-            autocomplete="off"
-          >
-          <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+      <div class="masthead-center">
+        <div>
+          <h1 class="brand-name">THE NEWS LOOM</h1>
+          <p class="brand-sub">Independent Global Dossier • Technology, Science & World Systems</p>
+        </div>
+        <div class="search-wrapper">
+          <input type="search" id="searchBar" placeholder="Search dispatches...">
         </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<nav class="category-nav" aria-label="Sections Navigation">
-  <div class="wrap">
-    <div class="category-scroll" id="categoryScroll">
-      <button class="cat-btn active" data-cat="all">All Desks</button>
-      <button class="cat-btn" data-cat="tech">🤖 AI & Frontier Tech</button>
-      <button class="cat-btn" data-cat="science">🚀 Deep Space & Physics</button>
-      <button class="cat-btn" data-cat="geopolitics">🌍 World Statecraft</button>
-      <button class="cat-btn" data-cat="economy">📊 Macro & Silicon Markets</button>
-      <button class="cat-btn" data-cat="climate">🌱 Fusion & Clean Power</button>
-      <button class="cat-btn" data-cat="culture">🏛 Culture & Strategy</button>
+  <nav class="nav-bar">
+    <div class="container">
+      <div class="nav-scroll" id="catNav">
+        <button class="cat-pill active" data-cat="all">All Topics</button>
+        <button class="cat-pill" data-cat="tech">AI & Quantum</button>
+        <button class="cat-pill" data-cat="science">Deep Space</button>
+        <button class="cat-pill" data-cat="climate">Energy & Fusion</button>
+        <button class="cat-pill" data-cat="markets">Semiconductors</button>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<div class="ticker-wrap">
-  <div class="wrap ticker-content">
-    <span class="ticker-label">DEVELOPING</span>
-    <span class="ticker-text" id="tickerText">Loading global intelligence wire...</span>
-  </div>
-</div>
-
-<main class="wrap main-content">
-
-  <!-- DASHBOARD OVERVIEW -->
-  <div id="dashboardView">
-    <!-- HERO FEATURED STORY -->
-    <section class="lead-feature" id="leadFeature">
-      <!-- Injected via script.js -->
-    </section>
-
-    <!-- SECONDARY GRID -->
-    <div class="section-divider">
-      <h2>Major Dispatches</h2>
-      <div class="rule"></div>
-    </div>
-
-    <section class="story-grid" id="storyGrid">
-      <!-- Injected via script.js -->
-    </section>
-
-    <div class="no-results" id="noResults" style="display:none">
-      <h3>No dispatches match your query</h3>
-      <p>Try searching for broader keywords such as "quantum", "space", "model", or "energy".</p>
-    </div>
-  </div>
-
-  <!-- ARTICLE READER VIEW -->
-  <section id="articleView" class="article-reader" style="display:none;" aria-live="polite">
-    <div class="reader-toolbar">
-      <a href="#" id="backLink" class="back-action">← Return to Dashboard</a>
-      <div class="reader-meta-group">
-        <button id="copyShareBtn" class="action-btn">Share Dossier</button>
+  <main class="container">
+    <!-- DASHBOARD VIEW -->
+    <div id="homeView">
+      <div id="featuredBox"></div>
+      <h2 class="grid-section-title">Latest Intelligence Dispatches</h2>
+      <div class="news-grid" id="newsGrid"></div>
+      <div id="emptyMessage" style="display:none;padding:40px 0;text-align:center;color:var(--text-muted);">
+        No articles match your search criteria.
       </div>
     </div>
 
-    <article class="longform-container">
-      <header class="reader-header">
-        <span class="article-cat" id="readerCategory"></span>
-        <h1 class="reader-title" id="readerTitle"></h1>
-        <p class="reader-lead" id="readerLead"></p>
-        <div class="reader-byline">
-          <span id="readerDate"></span> • <span id="readerLocation"></span> • <span id="readerReadTime"></span>
-        </div>
-      </header>
-
-      <div class="reader-hero-media">
-        <img id="readerImage" src="" alt="" loading="eager">
-        <figcaption id="readerCaption"></figcaption>
-      </div>
-
-      <div class="reader-content" id="readerBody"></div>
+    <!-- INLINE READER VIEW -->
+    <article id="readerView">
+      <button class="back-btn" id="closeReaderBtn">← Back to Dashboard</button>
+      <span class="tag" id="rTag"></span>
+      <h1 class="reader-h1" id="rTitle"></h1>
+      <p class="reader-lead-text" id="rLead"></p>
+      <div class="meta" id="rMeta" style="margin-bottom:16px;"></div>
+      <img id="rImg" class="reader-img" src="" alt="">
+      <div class="reader-body-copy" id="rContent"></div>
     </article>
-  </section>
+  </main>
 
-</main>
-
-<footer class="site-footer">
-  <div class="wrap footer-layout">
-    <div class="footer-brand">
-      <span class="brand-title">THE NEWS LOOM</span>
-      <p>Global intelligence dashboard providing continuous tracking across technological inflections, energy transitions, and systemic statecraft.</p>
-      <p class="copyright">© <span id="footerYear"></span> News Loom International. All rights reserved.</p>
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> The News Loom International. All reports cataloged and indexed.</p>
     </div>
-  </div>
-</footer>
+  </footer>
 
-<script src="articles.js"></script>
-<script src="script.js"></script>
+  <script>
+    // Embedded Data Set with high-res Unsplash editorial CDN images
+    const STORIES = [
+      {
+        id: 1,
+        cat: "tech",
+        catLabel: "AI & Quantum",
+        title: "Monolithic Silicon Optical Interconnect Transmits Quantum States at Room Temperature",
+        lead: "Engineers successfully transmit entangled photon pairs across ordinary fiber networks without cryo-cooling degradation.",
+        date: "September 2, 2026",
+        loc: "Geneva, Switzerland",
+        time: "4 min read",
+        img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Researchers have confirmed room-temperature photonic transmission of entangled states on consumer-grade silicon waveguides, bridging the thermal divide that historically confined quantum links to liquid helium environments.</p>
+               <p>By modulating trapped ions through high-frequency optical wave-guides, data fidelity remained above 99.4% over benchmark distances. The achievement paves the path for modular data centers to network quantum clusters using standard optical fiber backbones.</p>`
+      },
+      {
+        id: 2,
+        cat: "science",
+        catLabel: "Deep Space",
+        title: "Spectrometry Confirms Complex Hydrocarbon Chains Emanating from Europa Plumes",
+        lead: "Deep space probe skimming Jupiter's frozen moon registers organic signatures and elevated saline levels.",
+        date: "September 1, 2026",
+        loc: "Pasadena, USA",
+        time: "5 min read",
+        img: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Deep-space planetary telemetry transmitted across the Deep Space Network has confirmed dense concentrations of long-chain hydrocarbons within cryovolcanic plumes venting from Europa's southern polar fissures.</p>
+               <p>The discovery allows direct sampling of subsurface oceanic material without executing complex landing or drilling drills. Planetary scientists noted that the chemical balance represents an active thermodynamic engine conducive to prebiotic chemistry.</p>`
+      },
+      {
+        id: 3,
+        cat: "climate",
+        catLabel: "Energy & Fusion",
+        title: "High-Field Tokamak Reaches Continuous Q>2 Energy Return in Commercial Trial",
+        lead: "Private reactor containment exceeds 120 seconds of sustained net positive plasma stability.",
+        date: "August 30, 2026",
+        loc: "Oxford, UK",
+        time: "6 min read",
+        img: "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Operating magnetic field strengths exceeding 20 Tesla in compact geometries, the new superconducting reactor maintained stable deuterium-tritium plasma for over two minutes, delivering double the thermal energy supplied to initiate the burn.</p>
+               <p>The milestone transitions magnetic confinement from experimental physics to grid engineering, with power operators evaluating direct heat-exchanger coupling for baseline municipal transmission.</p>`
+      },
+      {
+        id: 4,
+        cat: "markets",
+        catLabel: "Semiconductors",
+        title: "Foundries Enter the Sub-Nanometer Era as High-NA EUV Enters Full Production",
+        lead: "Commercial fabrication shifts to atomic-scale gate patterning, reshaping global compute supply lines.",
+        date: "August 28, 2026",
+        loc: "Hsinchu, Taiwan",
+        time: "3 min read",
+        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Sub-nanometer logic node fabrication has commenced, using second-generation High-NA Extreme Ultraviolet lithography scanners to pattern circuits near atomic boundaries.</p>
+               <p>The unprecedented transistor density necessitates backside power delivery and direct liquid metal thermal diffusion to manage energetic workloads across next-generation neural architecture clusters.</p>`
+      }
+    ];
+
+    let activeFilter = "all";
+    let searchString = "";
+
+    const homeView = document.getElementById("homeView");
+    const readerView = document.getElementById("readerView");
+    const featuredBox = document.getElementById("featuredBox");
+    const newsGrid = document.getElementById("newsGrid");
+    const emptyMsg = document.getElementById("emptyMessage");
+
+    // Initialize dates
+    document.getElementById("currentDate").textContent = new Date().toLocaleDateString("en-US", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Render Logic
+    function render() {
+      const q = searchString.toLowerCase();
+      const filtered = STORIES.filter(item => {
+        const catMatch = activeFilter === "all" || item.cat === activeFilter;
+        const textMatch = !q || item.title.toLowerCase().includes(q) || item.lead.toLowerCase().includes(q);
+        return catMatch && textMatch;
+      });
+
+      if (filtered.length === 0) {
+        featuredBox.innerHTML = "";
+        newsGrid.innerHTML = "";
+        emptyMsg.style.display = "block";
+        return;
+      }
+      emptyMsg.style.display = "none";
+
+      // Lead Feature
+      const lead = filtered[0];
+      featuredBox.innerHTML = `
+        <div class="lead-box" onclick="showStory(${lead.id})">
+          <img class="lead-img" src="${lead.img}" alt="${lead.title}">
+          <div class="lead-text">
+            <span class="tag">${lead.catLabel}</span>
+            <h2 class="lead-headline">${lead.title}</h2>
+            <p class="lead-desc">${lead.lead}</p>
+            <div class="meta">${lead.date} • ${lead.loc} • ${lead.time}</div>
+          </div>
+        </div>
+      `;
+
+      // Other Stories
+      const others = filtered.slice(1);
+      newsGrid.innerHTML = others.map(item => `
+        <article class="news-card" onclick="showStory(${item.id})">
+          <img class="card-img" src="${item.img}" alt="${item.title}">
+          <div class="card-body">
+            <span class="tag">${item.catLabel}</span>
+            <h3 class="card-title">${item.title}</h3>
+            <p class="card-desc">${item.lead}</p>
+            <div class="meta">${item.date} • ${item.time}</div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    // Reader Switch
+    window.showStory = function(id) {
+      const item = STORIES.find(s => s.id === id);
+      if (!item) return;
+
+      document.getElementById("rTag").textContent = item.catLabel;
+      document.getElementById("rTitle").textContent = item.title;
+      document.getElementById("rLead").textContent = item.lead;
+      document.getElementById("rMeta").textContent = `${item.date} • ${item.loc} • ${item.time}`;
+      document.getElementById("rImg").src = item.img;
+      document.getElementById("rContent").innerHTML = item.body;
+
+      homeView.style.display = "none";
+      readerView.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.getElementById("closeReaderBtn").onclick = function() {
+      readerView.style.display = "none";
+      homeView.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    // Category Click Handling
+    document.querySelectorAll(".cat-pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".cat-pill").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeFilter = btn.dataset.cat;
+        render();
+      });
+    });
+
+    // Search Input Handling
+    document.getElementById("searchBar").addEventListener("input", (e) => {
+      searchString = e.target.value.trim();
+      render();
+    });
+
+    // Theme Switch
+    document.getElementById("themeSwitch").addEventListener("click", () => {
+      const isDark = document.body.getAttribute("data-theme") === "dark";
+      document.body.setAttribute("data-theme", isDark ? "light" : "dark");
+      document.getElementById("themeSwitch").textContent = isDark ? "Dark Mode" : "Light Mode";
+    });
+
+    // Initial render
+    render();
+  </script>
 </body>
 </html>
