@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chandanlalmallick.github.io/NewsLoom/sitemap.xml
