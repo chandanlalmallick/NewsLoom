@@ -1,548 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="ag3esFh04E0jMVaZcougm8vA16PAviXBEFzWP78fXoM" />
-
-  <title>The News Loom — Global Intelligence & Live Briefings</title>
-  <meta name="description" content="Global news dashboard covering artificial intelligence, space, semiconductors, geopolitics, energy, and world sports.">
-  <link rel="canonical" href="https://chandanlalmallick.github.io/NewsLoom/">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --font-serif: 'Newsreader', Georgia, serif;
-      --font-sans: 'Inter', sans-serif;
-      --font-brand: 'Cinzel', serif;
-
-      --bg-base: #f8f7f4;
-      --bg-card: #ffffff;
-      --bg-subtle: #eeece5;
-      --text-main: #121316;
-      --text-muted: #5a5e67;
-      --border: #dcdad2;
-      --accent: #b82323;
-      --shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-
-    [data-theme="dark"] {
-      --bg-base: #0d0e12;
-      --bg-card: #15171d;
-      --bg-subtle: #1d2028;
-      --text-main: #f2f4f8;
-      --text-muted: #9aa1ad;
-      --border: #282c36;
-      --accent: #ff4d4f;
-      --shadow: 0 4px 24px rgba(0,0,0,0.5);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg-base);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container { width: 92%; max-width: 1240px; margin: 0 auto; }
-
-    /* Masthead */
-    .masthead {
-      background: var(--bg-card);
-      border-bottom: 2px solid var(--text-main);
-      padding: 14px 0 20px;
-    }
-    .masthead-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-    }
-    .theme-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 4px 10px;
-      color: var(--text-main);
-      cursor: pointer;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    .masthead-center {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 16px;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .brand-name {
-      font-family: var(--font-brand);
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      line-height: 1;
-      letter-spacing: 0.04em;
-    }
-    .brand-sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
-
-    /* Search Area & Suggestions */
-    .search-container {
-      position: relative;
-      width: 100%;
-      max-width: 380px;
-    }
-    .search-wrapper {
-      display: flex;
-      align-items: center;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 4px 6px;
-    }
-    .search-wrapper input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text-main);
-      font-size: 0.88rem;
-      width: 100%;
-      padding: 6px 8px;
-    }
-    .search-action-btn {
-      background: var(--accent);
-      color: #ffffff;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-    .search-action-btn:hover {
-      opacity: 0.9;
-    }
-
-    /* Dropdown Suggestions List */
-    .suggestions-list {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      margin-top: 4px;
-      max-height: 240px;
-      overflow-y: auto;
-      list-style: none;
-      box-shadow: var(--shadow);
-      z-index: 1000;
-      display: none;
-    }
-    .suggestion-item {
-      padding: 10px 14px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .suggestion-item:last-child {
-      border-bottom: none;
-    }
-    .suggestion-item:hover {
-      background: var(--bg-subtle);
-      color: var(--accent);
-    }
-    .suggestion-cat {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    /* Navigation Bar */
-    .nav-bar {
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    .nav-scroll {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding: 8px 0;
-      scrollbar-width: none;
-    }
-    .nav-scroll::-webkit-scrollbar { display: none; }
-    .cat-pill {
-      background: transparent;
-      border: none;
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-    .cat-pill.active, .cat-pill:hover {
-      background: var(--bg-subtle);
-      color: var(--accent);
-    }
-
-    /* Ticker */
-    .ticker-bar {
-      background: var(--bg-subtle);
-      border-bottom: 1px solid var(--border);
-      padding: 8px 0;
-      font-size: 0.82rem;
-    }
-    .ticker-inner { display: flex; align-items: center; gap: 12px; }
-    .ticker-tag {
-      background: var(--accent);
-      color: #ffffff;
-      padding: 2px 6px;
-      font-weight: 700;
-      border-radius: 3px;
-      font-size: 0.72rem;
-      letter-spacing: 0.05em;
-    }
-    .ticker-msg {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    /* Featured Lead */
-    .lead-box {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-top: 24px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .lead-box:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-    .lead-img {
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .lead-text {
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .tag {
-      color: var(--accent);
-      font-size: 0.74rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-    .lead-headline {
-      font-family: var(--font-serif);
-      font-size: clamp(1.5rem, 2.4vw, 2.2rem);
-      line-height: 1.22;
-      margin-bottom: 12px;
-    }
-    .lead-desc {
-      color: var(--text-muted);
-      font-size: 0.96rem;
-      line-height: 1.55;
-      margin-bottom: 16px;
-    }
-    .meta { font-size: 0.78rem; color: var(--text-muted); }
-
-    /* Grid Section */
-    .grid-section-title {
-      font-family: var(--font-brand);
-      font-size: 1.25rem;
-      margin: 36px 0 16px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-    }
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-    }
-    .news-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .news-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-    .card-img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      display: block;
-    }
-    .card-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .card-title {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      line-height: 1.35;
-      margin: 6px 0 10px;
-    }
-    .card-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      flex-grow: 1;
-      margin-bottom: 14px;
-      line-height: 1.5;
-    }
-
-    /* Article Reader */
-    #readerView {
-      max-width: 800px;
-      margin: 30px auto;
-      display: none;
-    }
-    .back-btn {
-      display: inline-block;
-      margin-bottom: 20px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 8px 16px;
-      border-radius: 4px;
-      font-size: 0.88rem;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .reader-h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.18;
-      margin: 10px 0 16px;
-    }
-    .reader-lead-text {
-      font-size: 1.22rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-    .reader-img {
-      width: 100%;
-      border-radius: 8px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      margin-bottom: 24px;
-    }
-    .reader-body-copy {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      line-height: 1.85;
-    }
-    .reader-body-copy p { margin-bottom: 22px; }
-
-    footer {
-      border-top: 1px solid var(--border);
-      background: var(--bg-card);
-      padding: 40px 0;
-      margin-top: 60px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    @media (max-width: 800px) {
-      .lead-box { grid-template-columns: 1fr; }
-      .search-container { max-width: 100%; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The News Loom — Latest News, Current Affairs & Global Updates</title>
+<meta name="description" content="The News Loom — current affairs, breaking news, India and world news, technology, AI, business, science, sports and more.">
+<meta name="theme-color" content="#111827">
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f5f5f5;color:#151515}
+a{text-decoration:none;color:inherit}
+button,input,select{font:inherit}
+.container{width:min(1200px,94%);margin:auto}
+header{background:#111827;color:#fff;position:sticky;top:0;z-index:50;box-shadow:0 2px 10px #0002}
+.top{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 0}
+.logo{font-family:Georgia,serif;font-size:30px;font-weight:800}
+.logo span{color:#f59e0b}
+.actions{display:flex;gap:8px}
+.btn{border:0;border-radius:8px;padding:9px 12px;cursor:pointer;background:#fff;color:#111827}
+.nav{display:flex;gap:4px;overflow:auto;border-top:1px solid #ffffff22}
+.nav button{white-space:nowrap;background:none;border:0;color:#fff;padding:11px 13px;cursor:pointer}
+.nav button:hover{background:#ffffff18}
+.breaking{background:#b91c1c;color:white}
+.breaking .container{display:flex;gap:12px;align-items:center;padding:10px 0}
+.badge{font-size:12px;font-weight:800;background:#fff;color:#b91c1c;padding:4px 7px;border-radius:4px}
+.searchbar{padding:18px 0;background:#fff;border-bottom:1px solid #ddd}
+.searchbox{display:flex;gap:8px}
+.searchbox input{flex:1;padding:13px;border:1px solid #ccc;border-radius:8px}
+.searchbox button{padding:13px 18px;border:0;border-radius:8px;background:#111827;color:#fff}
+.suggestions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.chip{border:1px solid #ddd;background:#fafafa;padding:6px 10px;border-radius:20px;cursor:pointer;font-size:13px}
+main{padding:25px 0}
+.section-title{font:700 25px Georgia,serif;border-bottom:3px solid #111827;padding-bottom:8px;margin:30px 0 15px}
+.hero{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.card{background:#fff;border:1px solid #ddd;border-radius:10px;overflow:hidden;box-shadow:0 2px 7px #0000000d}
+.card-body{padding:15px}
+.card h2,.card h3{margin:7px 0;font-family:Georgia,serif}
+.card p{line-height:1.55;color:#555}
+.meta{font-size:12px;color:#777}
+.tag{display:inline-block;font-size:11px;font-weight:bold;text-transform:uppercase;color:#b91c1c}
+.hero-main{min-height:300px}
+.hero-main .card-body h2{font-size:30px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.article-list{display:grid;gap:12px}
+.list-card{display:grid;grid-template-columns:150px 1fr;background:#fff;border:1px solid #ddd;border-radius:8px;overflow:hidden}
+.fakeimg{height:150px;background:linear-gradient(135deg,#1f2937,#64748b);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:bold}
+.card .fakeimg{height:180px}
+.empty{padding:30px;text-align:center;background:#fff;border:1px solid #ddd;border-radius:8px}
+footer{margin-top:40px;background:#111827;color:#ddd;padding:35px 0}
+footer p{color:#aaa}
+.modal{display:none;position:fixed;inset:0;background:#000b;z-index:100;padding:20px;overflow:auto}
+.modal.show{display:block}
+.reader{background:#fff;max-width:850px;margin:20px auto;border-radius:12px;padding:25px;position:relative}
+.close{position:absolute;right:15px;top:10px;border:0;background:none;font-size:28px;cursor:pointer}
+.reader h1{font:800 38px Georgia,serif}
+.reader-content{font-size:17px;line-height:1.8;color:#333}
+.reader-actions{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.dark body{}
+body.dark{background:#0b1120;color:#eee}
+body.dark .searchbar,body.dark .card,body.dark .empty,body.dark .list-card,body.dark .reader{background:#111827;color:#eee;border-color:#263244}
+body.dark .card p,body.dark .reader-content{color:#d1d5db}
+body.dark .section-title{border-color:#eee}
+body.dark .chip{background:#111827;color:#eee;border-color:#374151}
+body.dark .searchbar{border-color:#263244}
+@media(max-width:800px){
+ .hero,.two{grid-template-columns:1fr}
+ .grid{grid-template-columns:1fr 1fr}
+ .logo{font-size:23px}
+ .reader h1{font-size:29px}
+}
+@media(max-width:550px){
+ .grid{grid-template-columns:1fr}
+ .list-card{grid-template-columns:100px 1fr}
+ .list-card .fakeimg{height:120px}
+ .hero-main .card-body h2{font-size:25px}
+}
+</style>
 </head>
+<body>
 
-<body data-theme="light">
+<header>
+<div class="container top">
+<div class="logo">The News <span>Loom</span></div>
+<div class="actions">
+<button class="btn" onclick="toggleDark()">◐</button>
+<button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Top</button>
+</div>
+</div>
+<div class="container nav" id="nav"></div>
+</header>
 
-  <header class="masthead">
-    <div class="container">
-      <div class="masthead-top">
-        <span id="currentDate"></span>
-        <button class="theme-btn" id="themeSwitch">Dark Mode</button>
-      </div>
-      <div class="masthead-center">
-        <div>
-          <h1 class="brand-name">THE NEWS LOOM</h1>
-          <p class="brand-sub">Independent Global Intelligence • AI, Space, Statecraft & Frontier Science</p>
-        </div>
+<div class="breaking">
+<div class="container">
+<span class="badge">BREAKING</span>
+<div id="breakingText">Latest current-affairs updates and major stories</div>
+</div>
+</div>
 
-        <div class="search-container">
-          <div class="search-wrapper">
-            <input type="search" id="searchBar" placeholder="Search OpenAI, ISRO, India, NVIDIA..." autocomplete="off">
-            <button class="search-action-btn" id="searchBtn">Search</button>
-          </div>
-          <!-- Dropdown suggestions -->
-          <ul class="suggestions-list" id="suggestionsBox"></ul>
-        </div>
-      </div>
-    </div>
-  </header>
+<section class="searchbar">
+<div class="container">
+<div class="searchbox">
+<input id="search" placeholder="Search news, topics, places..." oninput="searchNews()">
+<button onclick="searchNews()">Search</button>
+</div>
+<div class="suggestions" id="suggestions"></div>
+</div>
+</section>
 
-  <nav class="nav-bar">
-    <div class="container">
-      <div class="nav-scroll" id="catNav">
-        <button class="cat-pill active" data-cat="all">All Dispatches</button>
-        <button class="cat-pill" data-cat="ai">🤖 AI & LLMs</button>
-        <button class="cat-pill" data-cat="isro">🚀 ISRO & Deep Space</button>
-        <button class="cat-pill" data-cat="india">🇮🇳 India & Geopolitics</button>
-        <button class="cat-pill" data-cat="silicon">💻 NVIDIA & Silicon</button>
-        <button class="cat-pill" data-cat="energy">⚡ Fusion & Energy</button>
-        <button class="cat-pill" data-cat="sports">🏆 World Sports & Chess</button>
-      </div>
-    </div>
-  </nav>
+<main class="container">
+<section id="home">
+<h2 class="section-title">Top Stories</h2>
+<div class="hero" id="hero"></div>
 
-  <div class="ticker-bar">
-    <div class="container ticker-inner">
-      <span class="ticker-tag">LIVE WIRE</span>
-      <span class="ticker-msg" id="tickerMsg">Autonomous Reasoning Models Pass Graduate Mathematics Benchmarks</span>
-    </div>
-  </div>
+<h2 class="section-title">Most Popular Searches</h2>
+<div class="suggestions" id="popular"></div>
 
-  <main class="container">
-    <!-- DASHBOARD VIEW -->
-    <div id="homeView">
-      <div id="leadBoxMount"></div>
-      <h2 class="grid-section-title">Trending Global Dispatches</h2>
-      <div class="news-grid" id="newsGrid"></div>
-      <div id="emptyMessage" style="display:none;padding:50px 0;text-align:center;color:var(--text-muted);">
-        <h3>No matching briefings found.</h3>
-        <p style="margin-top:6px;">Try terms like "OpenAI", "Moon", "NVIDIA", "India", or "Fusion".</p>
-      </div>
-    </div>
+<h2 class="section-title">Latest Current Affairs</h2>
+<div class="grid" id="latest"></div>
 
-    <!-- READER VIEW -->
-    <article id="readerView">
-      <button class="back-btn" id="closeReaderBtn">← Return to Dashboard</button>
-      <span class="tag" id="rTag"></span>
-      <h1 class="reader-h1" id="rTitle"></h1>
-      <p class="reader-lead-text" id="rLead"></p>
-      <div class="meta" id="rMeta" style="margin-bottom:16px;"></div>
-      <img id="rImg" class="reader-img" src="" alt="">
-      <div class="reader-body-copy" id="rContent"></div>
-    </article>
-  </main>
+<h2 class="section-title">India</h2>
+<div class="grid" id="india"></div>
 
-  <footer>
-    <div class="container">
-      <p>© <span id="year"></span> The News Loom International. Verified intelligence dispatches cataloged from primary global labs.</p>
-    </div>
-  </footer>
+<h2 class="section-title">World & Geopolitics</h2>
+<div class="grid" id="world"></div>
 
-  <script>
-    const STORIES = [
-      {
-        id: 1,
-        cat: "ai",
-        tag: "Artificial Intelligence",
-        title: "Autonomous Reasoning Models Pass Graduate Mathematics Benchmarks Without Hallucination",
-        lead: "Frontier lab benchmarks reveal recursive self-correction architectures proving advanced topological theorems independently with zero human guidance.",
-        meta: "San Francisco, USA • 4 min read",
-        img: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
-        body: "<p>Evaluation labs have confirmed that the newest class of inference-compute frontier models has scored over 98% on graduate-level mathematics and formal verification benchmarks.</p><p>Rather than relying on statistical token guessing, the system executes real-time symbolic chain-of-thought verification using integrated formal provers. When a step fails mathematical rigor, the neural agent self-backtracks before returning output.</p><p>The development marks the transition of artificial intelligence from generative content creation to autonomous scientific exploration, with research centers preparing to deploy automated researchers for protein modeling and cryptography verification.</p>"
-      },
-      {
-        id: 2,
-        cat: "isro",
-        tag: "ISRO & Space",
-        title: "ISRO Finalizes Chandrayaan-4 Dual-Module Lunar Polar Sample Return Architecture",
-        lead: "Radar telemetry verifies high-density ice beds at 89° south latitude as Bengaluru engineers prep autonomous surface drills.",
-        meta: "Bengaluru, India • 5 min read",
-        img: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=1200&q=80",
-        body: "<p>The Indian Space Research Organisation has finalized trajectory models for its upcoming lunar sample retrieval deployment following verified spectral confirmations of subsurface volatile reserves at 89 degrees south latitude.</p><p>The robotic payload will deploy a dual-stage drill mechanism designed to preserve cryogenic volatiles in vacuum containers before launching a return vehicle back to Earth orbit.</p><p>International space agencies are closely coordinating telemetry agreements, recognizing that long-term manned lunar habitats depend directly on tapping these polar hydrogen deposits for fuel synthesis.</p>"
-      },
-      {
-        id: 3,
-        cat: "silicon",
-        tag: "NVIDIA & Silicon",
-        title: "TSMC and NVIDIA Enter 10-Angstrom Production Utilizing High-NA EUV Scanners",
-        lead: "Backside power delivery and liquid-metal thermal interfaces reshape enterprise AI cluster economics across global cloud datacenters.",
-        meta: "Hsinchu, Taiwan • 4 min read",
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-        body: "<p>Commercial fabrication lines have commenced round-the-clock runs of logic chips patterned at atomic dimensions, utilizing second-generation High-NA EUV lithography systems.</p><p>The breakthrough overcomes quantum tunneling limits through novel gate-all-around nanosheet architectures and backside power delivery networks. The architectural overhaul reduces chip operational temperatures by up to 25% under peak datacenter workloads.</p><p>Hardware suppliers project that dominance over this specialized chemical and optical supply chain will determine datacenter computational supremacy through the end of the decade.</p>"
-      },
-      {
-        id: 4,
-        cat: "india",
-        tag: "India & Geopolitics",
-        title: "India Expands Unified Payments Interface Network to 16 Central Bank Corridors",
-        lead: "Instant sovereign currency settlement accounts surge as Global South trading partners bypass legacy SWIFT transaction friction.",
-        meta: "New Delhi, India • 5 min read",
-        img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
-        body: "<p>Multilateral agreements ratified this week expand instant sovereign currency settlement frameworks between India and over a dozen partner economies across the Global South and the Middle East.</p><p>By routing trade settlements directly through interconnected Unified Payments Interfaces and national central bank digital ledgers, participating states have reduced cross-border friction costs by nearly 80%.</p><p>Financial analysts note the strategic shift significantly reduces dependence on legacy dollar clearing correspondent banks for bilateral agricultural and energy transactions.</p>"
-      },
-      {
-        id: 5,
-        cat: "energy",
-        tag: "Nuclear & Fusion",
-        title: "High-Field Superconducting Tokamak Delivers Continuous Q>2 Energy Return",
-        lead: "Compact magnetic confinement surpasses 150-second continuous plasma stability, verifying commercial grid viability.",
-        meta: "Oxford, UK • 6 min read",
-        img: "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
-        body: "<p>Operating compact high-temperature superconducting (HTS) magnets above 21 Tesla, private research reactors have sustained deuterium-tritium reactions producing double the heat energy invested into initial heating.</p><p>Unlike massive historical megaprojects, the compact vessel topology lowers capital construction estimates to numbers comparable with modern nuclear fission plants.</p><p>Grid transmission consortia have already signed preliminary interconnection pacts to evaluate pulsed baseline injection tests into municipal energy networks.</p>"
-      },
-      {
-        id: 6,
-        cat: "ai",
-        tag: "AI & Quantum",
-        title: "Silicon Photonic Interconnect Couples Quantum Processors at Room Temperature",
-        lead: "Optical waveguides eliminate costly cryogenic refrigeration relays, clearing pathways for scalable modular quantum superclusters.",
-        meta: "Geneva, Switzerland • 4 min read",
-        img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
-        body: "<p>Physicists have demonstrated continuous photonic transfer of entangled quantum states over standard telecommunication fiber without requiring dilution refrigeration relays.</p><p>The achievement dismantles one of quantum technology's most severe barriers: interconnecting distinct cryogenic processor boxes without introducing destructive thermal noise.</p>"
-      },
-      {
-        id: 7,
-        cat: "sports",
-        tag: "Global Sports & Chess",
-        title: "FIDE Adopts Fast-Clock Tiebreak Rules to Reward Decisive Attacking Systems",
-        lead: "World championship cycle cuts down excessive classical draws, triggering massive excitement among younger grandmaster generations.",
-        meta: "Tash
+<h2 class="section-title">Technology & AI</h2>
+<div class="grid" id="technology"></div>
+
+<h2 class="section-title">Business & Economy</h2>
+<div class="grid" id="business"></div>
+
+<h2 class="section-title">Science & Space</h2>
+<div class="grid" id="science"></div>
+
+<h2 class="section-title">Sports</h2>
+<div class="grid" id="sports"></div>
+
+<section id="results" style="display:none">
+<h2 class="section-title">Search Results</h2>
+<div class="article-list" id="resultList"></div>
+</section>
+</section>
+</main>
+
+<footer>
+<div class="container">
+<h2>The News Loom</h2>
+<p>A static news and current-affairs reading website built for GitHub Pages.</p>
+<p>Stories shown here are editorial/demo content unless otherwise stated. Always verify important breaking news with reliable primary sources.</p>
+</div>
+</footer>
+
+<div class="modal" id="modal">
+<article class="reader">
+<button class="close" onclick="closeArticle()">×</button>
+<div id="reader"></div>
+</article>
+</div>
+
+<script>
+/* Static data: this can later be replaced by Claude's full 160-article dataset. */
+const articles=[
+{id:1,title:"Global markets watch inflation, rates and economic signals",category:"Business",description:"A broad look at the economic themes moving markets and businesses.",content:"Investors and businesses continue to watch inflation, interest-rate expectations, growth indicators and major economic developments. This explainer provides context rather than claiming a live market result.",date:"2026-09-02",time:"09:00",author:"News Loom Desk",readTime:4,priority:10,trending:true,tags:["markets","economy","business"]},
+{id:2,title:"India current affairs: major policy and national developments",category:"India",description:"Key themes and developments being followed across India.",content:"India remains a major focus for current-affairs readers, with policy, infrastructure, technology, education, jobs and economic developments shaping the national conversation.",date:"2026-09-02",time:"08:40",author:"News Loom Desk",readTime:4,priority:9,trending:true,tags:["India","current affairs"]},
+{id:3,title:"AI industry enters a new phase of rapid adoption",category:"Technology",description:"How artificial intelligence is changing products, work and research.",content:"Artificial intelligence continues to expand across software, education, research, business and consumer products. Readers should distinguish announcements from independently verified results.",date:"2026-09-02",time:"08:20",author:"Tech Desk",readTime:5,priority:9,trending:true,tags:["AI","technology"]},
+{id:4,title:"Space science: missions and discoveries to watch",category:"Science",description:"Important themes in astronomy, space exploration and science.",content:"Space agencies and private organisations continue to develop missions involving Earth observation, lunar exploration, planetary science and astronomy.",date:"2026-09-02",time:"08:00",author:"Science Desk",readTime:5,priority:8,trending:true,tags:["space","science"]},
+{id:5,title:"Geopolitics: major international issues shaping the news",category:"World",description:"An explainer on the global issues attracting attention.",content:"International relations remain shaped by diplomacy, security, trade, energy and regional conflicts. This article is a background explainer and should not be read as a live breaking-news report.",date:"2026-09-02",time:"07:45",author:"World Desk",readTime:5,priority:8,trending:true,tags:["world","geopolitics"]},
+{id:6,title:"Cricket and global sport: stories fans are following",category:"Sports",description:"A quick overview of major themes in international sport.",content:"Cricket, football, tennis, chess and other sports attract large global audiences. Follow official competition sources for confirmed fixtures and results.",date:"2026-09-02",time:"07:20",author:"Sports Desk",readTime:3,priority:7,trending:true,tags:["sports","cricket"]},
+{id:7,title:"Cybersecurity remains a top concern for organisations",category:"Technology",description:"Why digital security continues to matter for businesses and users.",content:"Organisations are increasingly focused on account security, software updates, phishing prevention, data protection and resilient systems.",date:"2026-09-01",time:"18:00",author:"Tech Desk",readTime:4,priority:7,trending:false,tags:["cybersecurity","technology"]},
+{id:8,title:"Climate and energy transition remain global priorities",category:"Environment",description:"The energy and climate issues shaping policy and investment.",content:"Energy security, renewable generation, storage, nuclear power and emissions reduction remain central themes in climate and economic policy.",date:"2026-09-01",time:"16:30",author:"Environment Desk",readTime:4,priority:6,trending:false,tags:["climate","energy"]},
+{id:9,title:"Education and jobs: skills remain central to the future of work",category:"Education",description:"How education, skills and employment trends connect.",content:"Students and workers increasingly need adaptable technical, analytical and communication skills as industries change.",date:"2026-09-01",time:"15:00",author:"Education Desk",readTime:4,priority:6,trending:false,tags:["education","jobs"]},
+{id:10,title:"Entertainment industry adapts to changing audiences",category:"Entertainment",description:"How movies, music and digital entertainment continue to evolve.",content:"Streaming, cinema, music platforms and gaming continue to compete for audience attention while creators experiment with new formats.",date:"2026-09-01",time:"13:30",author:"Culture Desk",readTime:3,priority:5,trending:false,tags:["movies","music","entertainment"]}
+];
+
+const categories=["All","India","World","Politics","Business","Technology","Science","Sports","Entertainment","Education","Health","Environment","Defence"];
+const popular=["latest news","India news","world news","AI news","technology news","business news","current affairs","space news","sports news"];
+
+const extra=[
+["Politics","Elections, governments and policy explained"],
+["Health","Public health, medicine and wellness developments"],
+["Defence","Security, military technology and strategic affairs"],
+["Finance","Banking, markets, money and personal finance"],
+["Auto","Electric vehicles and the future of mobility"],
+["Gaming","Video games, esports and gaming technology"]
+];
+
+extra.forEach((x,i)=>{
+ articles.push({
+ id:100+i,title:x[1],category:x[0],description:"A News Loom explainer covering an important topic in "+x[0]+".",
+ content:"This is a background explainer for readers interested in "+x[0]+". For live developments, readers should verify information through authoritative sources.",
+ date:"2026-09-01",time:"12:00",author:"News Loom Desk",readTime:4,priority:4,trending:false,tags:[x[0].toLowerCase(),"current affairs"]
+ });
+});
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+
+function card(a){
+return `<article class="card" onclick="openArticle(${a.id})">
+<div class="fakeimg">${esc(a.category)}</div>
+<div class="card-body">
+<div class="tag">${esc(a.category)}</div>
+<h3>${esc(a.title)}</h3>
+<p>${esc(a.description)}</p>
+<div class="meta">${esc(a.date)} · ${a.readTime} min read</div>
+</div></article>`;
+}
+
+function render(){
+document.getElementById("nav").innerHTML=categories.map(c=>`<button onclick="filterCategory('${c}')">${c}</button>`).join("");
+document.getElementById("popular").innerHTML=popular.map(x=>`<button class="chip" onclick="doSearch('${x}')">${x}</button>`).join("");
+document.getElementById("suggestions").innerHTML=popular.slice(0,6).map(x=>`<button class="chip" onclick="doSearch('${x}')">${x}</button>`).join("");
+
+let sorted=[...articles].sort((a,b)=>b.priority-a.priority);
+document.getElementById("hero").innerHTML=card(sorted[0])+`<div class="article-list">${sorted.slice(1,3).map(a=>card(a)).join("")}</div>`;
+document.getElementById("latest").innerHTML=sorted.slice(0,6).map(card).join("");
+section("india","India",6); section("world","World",6); section("technology","Technology",6);
+section("business","Business",6); section("science","Science",6); section("sports","Sports",6);
+document.getElementById("breakingText").textContent=sorted[0].title;
+}
+
+function section(id,cat,n){
+let arr=articles.filter(a=>a.category.toLowerCase()==cat.toLowerCase()).slice(0,n);
+document.getElementById(id).innerHTML=arr.length?arr.map(card).join(""):`<div class="empty">More ${cat} stories will appear here.</div>`;
+}
+
+function openArticle(id){
+const a=articles.find(x=>x.id==id); if(!a)return;
+document.getElementById("reader").innerHTML=`
+<div class="tag">${esc(a.category)}</div>
+<h1>${esc(a.title)}</h1>
+<div class="meta">${esc(a.date)} · ${esc(a.author)} · ${a.readTime} min read</div>
+<div class="reader-actions">
+<button class="btn" onclick="bookmark(${a.id})">🔖 Bookmark</button>
+<button class="btn" onclick="shareArticle('${encodeURIComponent(a.title)}')">↗ Share</button>
+</div>
+<div class="reader-content"><p><strong>${esc(a.description)}</strong></p><p>${esc(a.content)}</p></div>
+<div class="suggestions">${(a.tags||[]).map(t=>`<span class="chip">#${esc(t)}</span>`).join("")}</div>`;
+document.getElementById("modal").classList.add("show");
+history.replaceState(null,"","#article-"+a.id);
+}
+function closeArticle(){document.getElementById("modal").classList.remove("show");history.replaceState(null,"",location.pathname+location.search)}
+function filterCategory(cat){
+if(cat=="All"){document.getElementById("results").style.display="none";document.getElementById("home").style.display="block";return}
+let arr=articles.filter(a=>a.category.toLowerCase()==cat.toLowerCase());
+showResults(arr,cat);
+}
+function searchNews(){
+let q=document.getElementById("search").value.trim().toLowerCase();
+if(!q){document.getElementById("results").style.display="none";document.getElementById("home").style.display="block";return}
+let arr=articles.filter(a=>(a.title+" "+a.description+" "+a.category+" "+(a.tags||[]).join(" ")).toLowerCase().includes(q));
+showResults(arr,"Search");
+}
+function doSearch(q){document.getElementById("search").value=q;searchNews();window.scrollTo({top:300,behavior:"smooth"})}
+function showResults(arr,title){
+document.getElementById("home").style.display="none";
+document.getElementById("results").style.display="block";
+document.querySelector("#results .section-title").textContent=title+" — "+arr.length+" result(s)";
+document.getElementById("resultList").innerHTML=arr.length?arr.map(a=>`<article class="list-card" onclick="openArticle(${a.id})"><div class="fakeimg">${esc(a.category)}</div><div class="card-body"><div class="tag">${esc(a.category)}</div><h3>${esc(a.title)}</h3><p>${esc(a.description)}</p><div class="meta">${esc(a.date)}</div></div></article>`).join(""):`<div class="empty">No stories found. Try another search.</div>`;
+}
+function toggleDark(){document.body.classList.toggle("dark");localStorage.setItem("loomDark",document.body.classList.contains("dark"))}
+function bookmark(id){
+let b=JSON.parse(localStorage.getItem("loomBookmarks")||"[]");
+if(!b.includes(id))b.push(id);else b=b.filter(x=>x!==id);
+localStorage.setItem("loomBookmarks",JSON.stringify(b));
+alert(b.includes(id)?"Bookmarked":"Bookmark removed");
+}
+function shareArticle(title){
+let url=location.href;
+if(navigator.share)navigator.share({title:decodeURIComponent(title),url});
+else navigator.clipboard?.writeText(url).then(()=>alert("Article link copied."));
+}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeArticle()});
+if(localStorage.getItem("loomDark")==="true")document.body.classList.add("dark");
+render();
+</script>
+</body>
+</html>
