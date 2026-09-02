@@ -1,84 +1,76 @@
 const fs = require('fs');
 const path = require('path');
 
-// 1. Load articles array (ensure articles.js exports: module.exports = articles; or window.ARTICLES)
+const siteUrl = 'https://chandanlalmallick.github.io/NewsLoom';
+
+// 1. Read and safely parse articles.js
 const articlesPath = path.join(__dirname, 'articles.js');
-let articlesContent = fs.readFileSync(articlesPath, 'utf8');
-
-// Quick parse if articles.js uses "const ARTICLES = [...]"
-if (articlesContent.includes('const ARTICLES =')) {
-  articlesContent = articlesContent.replace('const ARTICLES =', 'module.exports =');
+if (!fs.existsSync(articlesPath)) {
+  console.error('articles.js not found');
+  process.exit(1);
 }
-const articles = eval(articlesContent);
 
+let code = fs.readFileSync(articlesPath, 'utf8');
+
+// Isolate and extract the array data safely
+let articles = [];
+try {
+  const sandbox = {};
+  const fn = new Function('window', `${code}; return window.ARTICLES || ARTICLES || [];`);
+  articles = fn(sandbox);
+} catch (err) {
+  console.log('Fallback parsing articles...');
+  const jsonMatch = code.match(/\[\s*\{[\s\S]*\}\s*\]/);
+  if (jsonMatch) {
+    articles = eval(jsonMatch[0]);
+  }
+}
+
+if (!Array.isArray(articles) || articles.length === 0) {
+  console.warn('No articles parsed. Generating base sitemap only.');
+  articles = [];
+}
+
+// 2. Prepare news output directory
 const outputDir = path.join(__dirname, 'news');
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-const siteUrl = 'https://chandanlalmallick.github.io/NewsLoom';
-
-// 2. Generate an individual HTML page for each article
+// 3. Generate static HTML files
 articles.forEach((item, index) => {
   const slug = item.slug || `article-${index + 1}`;
+  const title = (item.title || 'News Update').replace(/"/g, '&quot;');
+  const desc = (item.summary || item.lead || item.title || '').replace(/"/g, '&quot;');
   const articleUrl = `${siteUrl}/news/${slug}.html`;
-  
+
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${item.title} — News Loom</title>
-  <meta name="description" content="${item.summary || item.lead || ''}">
+  <title>${title} — News Loom</title>
+  <meta name="description" content="${desc}">
   <link rel="canonical" href="${articleUrl}">
-  
-  <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:title" content="${item.title}">
-  <meta property="og:description" content="${item.summary || item.lead || ''}">
+  <meta property="og:title" content="${title}">
+  <meta property="og:description" content="${desc}">
   <meta property="og:url" content="${articleUrl}">
-  
-  <!-- Structured Data: NewsArticle -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "headline": "${item.title.replace(/"/g, '\\"')}",
-    "description": "${(item.summary || '').replace(/"/g, '\\"')}",
-    "mainEntityOfPage": "${articleUrl}",
-    "datePublished": "${item.date || new Date().toISOString().split('T')[0]}",
-    "author": {
-      "@type": "Organization",
-      "name": "News Loom"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "News Loom"
-    }
-  }
-  </script>
   <link rel="stylesheet" href="../style.css">
 </head>
 <body data-theme="light">
   <header class="masthead">
     <div class="wrap">
-      <a href="../index.html" class="back-link">← Back to News Loom Home</a>
+      <a href="../index.html" style="color:inherit;text-decoration:none;font-weight:bold;">← Back to News Loom</a>
     </div>
   </header>
-
-  <main class="wrap">
-    <article class="article-view" style="display:block;">
-      <div class="article-header">
-        <span class="article-tag">${item.category || 'News'}</span>
-        <h1>${item.title}</h1>
-        <div class="article-meta">
-          <span>${item.date || ''}</span> | <span>${item.location || 'Global'}</span>
-        </div>
-      </div>
-      <div class="article-body">
-        <p class="article-lead"><strong>${item.lead || ''}</strong></p>
-        <div class="article-content">${item.body || item.content || ''}</div>
-      </div>
+  <main class="wrap" style="max-width:800px;margin:30px auto;padding:0 15px;">
+    <article>
+      <span style="font-size:0.85rem;text-transform:uppercase;color:#e63946;font-weight:700;">${item.category || 'World'}</span>
+      <h1 style="margin:12px 0 16px;">${item.title || ''}</h1>
+      <p style="color:#666;font-size:0.9rem;margin-bottom:20px;">${item.date || ''} • ${item.location || 'Global'}</p>
+      <p style="font-size:1.15rem;line-height:1.7;font-weight:500;">${item.lead || ''}</p>
+      <div style="line-height:1.8;margin-top:16px;">${item.body || item.content || ''}</div>
     </article>
   </main>
 </body>
@@ -87,9 +79,7 @@ articles.forEach((item, index) => {
   fs.writeFileSync(path.join(outputDir, `${slug}.html`), html, 'utf8');
 });
 
-console.log(`Generated ${articles.length} individual static article pages.`);
-
-// 3. Generate XML Sitemap
+// 4. Generate sitemap.xml
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
@@ -98,13 +88,12 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
   </url>
   ${articles.map((item, index) => {
     const slug = item.slug || `article-${index + 1}`;
-    return `
-  <url>
+    return `<url>
     <loc>${siteUrl}/news/${slug}.html</loc>
     <priority>0.8</priority>
   </url>`;
-  }).join('')}
+  }).join('\n  ')}
 </urlset>`;
 
 fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemap, 'utf8');
-console.log('Generated sitemap.xml.');
+console.log(`Successfully generated ${articles.length} article pages and sitemap.xml`);
