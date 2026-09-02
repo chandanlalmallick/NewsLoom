@@ -3,353 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="google-site-verification" content="ag3esFh04E0jMVaZcougm8vA16PAviXBEFzWP78fXoM" />
-
-  <title>News Loom — Global Intelligence, AI, ISRO, India & Tech Markets</title>
-  <meta name="description" content="Real-time global news intelligence covering OpenAI models, NVIDIA silicon, ISRO lunar missions, Indian geopolitical strategy, clean fusion, and world sports.">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <title>News Loom — 500+ Live Global Wire Headlines</title>
+  <meta name="description" content="Search and read over 500 live global dispatches covering world geopolitics, AI, space exploration, silicon markets, and sports.">
   <link rel="canonical" href="https://chandanlalmallick.github.io/NewsLoom/">
 
-  <!-- Editorial Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --font-serif: 'Newsreader', Georgia, serif;
-      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: 'Inter', sans-serif;
       --font-brand: 'Cinzel', serif;
 
-      --bg-base: #f8f7f4;
+      --bg-base: #f7f6f2;
       --bg-card: #ffffff;
       --bg-subtle: #eeece5;
-      --text-main: #121316;
-      --text-muted: #5a5e67;
-      --border: #dcdad2;
+      --text-main: #111215;
+      --text-muted: #5e626b;
+      --border: #dcd9d0;
       --accent: #c92a2a;
-      --shadow: 0 4px 20px rgba(0,0,0,0.06);
+      --shadow: 0 4px 18px rgba(0,0,0,0.06);
     }
-
     [data-theme="dark"] {
-      --bg-base: #0d0e12;
-      --bg-card: #15171d;
-      --bg-subtle: #1d2028;
-      --text-main: #f2f4f8;
+      --bg-base: #0c0d10;
+      --bg-card: #14161b;
+      --bg-subtle: #1c1f26;
+      --text-main: #f3f5f8;
       --text-muted: #9aa1ad;
-      --border: #282c36;
+      --border: #262a33;
       --accent: #ff4d4f;
-      --shadow: 0 4px 24px rgba(0,0,0,0.5);
+      --shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg-base);
-      color: var(--text-main);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .container {
-      width: 92%;
-      max-width: 1240px;
-      margin: 0 auto;
-    }
+    body { background: var(--bg-base); color: var(--text-main); font-family: var(--font-sans); line-height: 1.6; }
+    .container { width: 92%; max-width: 1240px; margin: 0 auto; }
 
     /* Masthead */
-    .masthead {
-      background: var(--bg-card);
-      border-bottom: 2px solid var(--text-main);
-      padding: 14px 0 20px;
-    }
-    .masthead-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-    }
-    .theme-btn {
-      background: transparent;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 4px 10px;
-      color: var(--text-main);
-      cursor: pointer;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    .masthead-center {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-top: 16px;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-    .brand-name {
-      font-family: var(--font-brand);
-      font-size: clamp(2rem, 5vw, 3.4rem);
-      line-height: 1;
-      letter-spacing: 0.04em;
-    }
-    .brand-sub {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-    }
+    .masthead { background: var(--bg-card); border-bottom: 2px solid var(--text-main); padding: 14px 0 18px; }
+    .masthead-top { display: flex; justify-content: space-between; font-size: 0.76rem; text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .theme-btn { background: transparent; border: 1px solid var(--border); border-radius: 4px; padding: 3px 8px; color: var(--text-main); cursor: pointer; }
+    .masthead-center { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 16px; flex-wrap: wrap; gap: 16px; }
+    .brand-name { font-family: var(--font-brand); font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: 0.04em; }
+    
+    /* Search */
+    .search-wrapper { display: flex; align-items: center; background: var(--bg-subtle); border: 1px solid var(--border); border-radius: 6px; padding: 8px 14px; width: 100%; max-width: 360px; }
+    .search-wrapper input { background: transparent; border: none; outline: none; color: var(--text-main); font-size: 0.88rem; width: 100%; margin-left: 8px; }
 
-    /* Search Box */
-    .search-wrapper {
-      display: flex;
-      align-items: center;
-      background: var(--bg-subtle);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 8px 14px;
-      width: 100%;
-      max-width: 360px;
-    }
-    .search-wrapper input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--text-main);
-      font-size: 0.88rem;
-      width: 100%;
-      margin-left: 8px;
-    }
+    /* Nav */
+    .nav-bar { background: var(--bg-card); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
+    .nav-scroll { display: flex; gap: 6px; overflow-x: auto; padding: 8px 0; scrollbar-width: none; }
+    .cat-pill { background: transparent; border: none; font-size: 0.84rem; font-weight: 600; color: var(--text-muted); padding: 6px 12px; border-radius: 4px; cursor: pointer; white-space: nowrap; }
+    .cat-pill.active, .cat-pill:hover { background: var(--bg-subtle); color: var(--accent); }
 
-    /* Navigation Bar */
-    .nav-bar {
-      background: var(--bg-card);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-    .nav-scroll {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding: 8px 0;
-      scrollbar-width: none;
-    }
-    .nav-scroll::-webkit-scrollbar { display: none; }
-    .cat-pill {
-      background: transparent;
-      border: none;
-      font-size: 0.84rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 4px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
-    .cat-pill.active, .cat-pill:hover {
-      background: var(--bg-subtle);
-      color: var(--accent);
-    }
+    /* Ticker */
+    .ticker-bar { background: var(--bg-subtle); border-bottom: 1px solid var(--border); padding: 8px 0; font-size: 0.82rem; }
+    .ticker-inner { display: flex; align-items: center; gap: 12px; }
+    .ticker-tag { background: var(--accent); color: #fff; padding: 2px 6px; font-weight: 700; border-radius: 3px; font-size: 0.72rem; }
+    .ticker-msg { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text-muted); }
 
-    /* Live Intelligence Ticker */
-    .ticker-bar {
-      background: var(--bg-subtle);
-      border-bottom: 1px solid var(--border);
-      padding: 8px 0;
-      font-size: 0.82rem;
-    }
-    .ticker-inner {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .ticker-tag {
-      background: var(--accent);
-      color: #ffffff;
-      padding: 2px 6px;
-      font-weight: 700;
-      border-radius: 3px;
-      font-size: 0.72rem;
-      letter-spacing: 0.05em;
-    }
-    .ticker-msg {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
-
-    /* Featured Lead Story */
-    .lead-box {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      margin-top: 24px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: box-shadow 0.2s, transform 0.2s;
-    }
-    .lead-box:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
-    }
-    .lead-img {
-      aspect-ratio: 16 / 9;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .lead-text {
-      padding: 26px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .tag {
-      color: var(--accent);
-      font-size: 0.74rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-    .lead-headline {
-      font-family: var(--font-serif);
-      font-size: clamp(1.5rem, 2.4vw, 2.2rem);
-      line-height: 1.22;
-      margin-bottom: 12px;
-    }
-    .lead-desc {
-      color: var(--text-muted);
-      font-size: 0.96rem;
-      line-height: 1.55;
-      margin-bottom: 16px;
-    }
+    /* Grid */
+    .grid-header { display: flex; justify-content: space-between; align-items: flex-end; margin: 30px 0 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+    .grid-title { font-family: var(--font-brand); font-size: 1.25rem; }
+    .article-counter { font-size: 0.85rem; color: var(--accent); font-weight: 700; }
+    .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    .news-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; cursor: pointer; transition: transform 0.2s; }
+    .news-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .card-img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
+    .card-body { padding: 16px; display: flex; flex-direction: column; flex-grow: 1; }
+    .tag { color: var(--accent); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .card-title { font-family: var(--font-serif); font-size: 1.18rem; line-height: 1.35; margin: 6px 0 10px; }
+    .card-desc { font-size: 0.86rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 12px; }
     .meta { font-size: 0.78rem; color: var(--text-muted); }
 
-    /* Secondary Grid */
-    .grid-section-title {
-      font-family: var(--font-brand);
-      font-size: 1.25rem;
-      margin: 36px 0 16px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-    }
-    .news-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 24px;
-    }
-    .news-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .news-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
-    }
-    .card-img {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      display: block;
-    }
-    .card-body {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .card-title {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      line-height: 1.35;
-      margin: 6px 0 10px;
-    }
-    .card-desc {
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      flex-grow: 1;
-      margin-bottom: 14px;
-      line-height: 1.5;
-    }
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; gap: 10px; margin: 40px 0; }
+    .page-btn { background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-    /* Article Reader Mode */
-    #readerView {
-      max-width: 800px;
-      margin: 30px auto;
-      display: none;
-    }
-    .back-btn {
-      display: inline-block;
-      margin-bottom: 20px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 8px 16px;
-      border-radius: 4px;
-      font-size: 0.88rem;
-      cursor: pointer;
-      text-decoration: none;
-      font-weight: 600;
-    }
-    .reader-h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.18;
-      margin: 10px 0 16px;
-    }
-    .reader-lead-text {
-      font-size: 1.22rem;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-      line-height: 1.5;
-    }
-    .reader-img {
-      width: 100%;
-      border-radius: 8px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      margin-bottom: 24px;
-    }
-    .reader-body-copy {
-      font-family: var(--font-serif);
-      font-size: 1.2rem;
-      line-height: 1.85;
-    }
-    .reader-body-copy p { margin-bottom: 22px; }
+    /* Reader Drawer */
+    #readerView { max-width: 800px; margin: 30px auto; display: none; }
+    .back-btn { display: inline-block; margin-bottom: 20px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-main); padding: 8px 16px; border-radius: 4px; cursor: pointer; font-weight: 600; }
+    .reader-h1 { font-family: var(--font-serif); font-size: clamp(2rem, 3.8vw, 2.8rem); line-height: 1.2; margin: 10px 0 16px; }
+    .source-link { display: inline-block; margin-top: 20px; background: var(--accent); color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 4px; font-weight: 600; font-size: 0.9rem; }
 
-    footer {
-      border-top: 1px solid var(--border);
-      background: var(--bg-card);
-      padding: 40px 0;
-      margin-top: 60px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-align: center;
-    }
-
-    @media (max-width: 800px) {
-      .lead-box { grid-template-columns: 1fr; }
-      .search-wrapper { max-width: 100%; }
-    }
+    footer { border-top: 1px solid var(--border); background: var(--bg-card); padding: 30px 0; margin-top: 60px; font-size: 0.85rem; color: var(--text-muted); text-align: center; }
   </style>
 </head>
 
@@ -358,19 +97,16 @@
   <header class="masthead">
     <div class="container">
       <div class="masthead-top">
-        <span id="currentDate">Wednesday, September 2, 2026</span>
-        <button class="theme-btn" id="themeSwitch">Dark Mode</button>
+        <span id="mastheadDate"></span>
+        <button class="theme-btn" id="themeBtn">Dark Mode</button>
       </div>
       <div class="masthead-center">
         <div>
           <h1 class="brand-name">THE NEWS LOOM</h1>
-          <p class="brand-sub">Independent Global Intelligence • Artificial Intelligence, ISRO, Silicon & Statecraft</p>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-top:4px;">Global Intelligence Wire • 500+ Live Syndicated Reports</p>
         </div>
         <div class="search-wrapper">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-          </svg>
-          <input type="search" id="searchBar" placeholder="Search OpenAI, ISRO, India, NVIDIA, Space...">
+          <input type="search" id="searchBox" placeholder="Search 500+ topics (AI, India, Markets, Space)...">
         </div>
       </div>
     </div>
@@ -380,165 +116,181 @@
     <div class="container">
       <div class="nav-scroll" id="catNav">
         <button class="cat-pill active" data-cat="all">All Dispatches</button>
-        <button class="cat-pill" data-cat="ai">🤖 AI & LLMs</button>
-        <button class="cat-pill" data-cat="isro">🚀 ISRO & Space</button>
-        <button class="cat-pill" data-cat="india">🇮🇳 India & Geopolitics</button>
-        <button class="cat-pill" data-cat="silicon">💻 NVIDIA & Tech</button>
-        <button class="cat-pill" data-cat="energy">⚡ Nuclear & Fusion</button>
-        <button class="cat-pill" data-cat="sports">🏆 Global Sports & Chess</button>
+        <button class="cat-pill" data-cat="world">🌍 World</button>
+        <button class="cat-pill" data-cat="india">🇮🇳 India</button>
+        <button class="cat-pill" data-cat="tech">🤖 AI & Tech</button>
+        <button class="cat-pill" data-cat="business">📈 Markets</button>
+        <button class="cat-pill" data-cat="science">🚀 Science & Space</button>
+        <button class="cat-pill" data-cat="sports">🏆 Sports</button>
       </div>
     </div>
   </nav>
 
   <div class="ticker-bar">
     <div class="container ticker-inner">
-      <span class="ticker-tag">LIVE WIRE</span>
-      <span class="ticker-msg">OpenAI o3 & Reasoning Models Pass Autonomous Graduate Mathematics Benchmarks</span>
+      <span class="ticker-tag">WIRE</span>
+      <span class="ticker-msg" id="tickerText">Loading 500+ global intelligence feeds...</span>
     </div>
   </div>
 
   <main class="container">
-    <!-- DASHBOARD VIEW -->
     <div id="homeView">
-      
-      <!-- HERO LEAD STORY -->
-      <div class="lead-box" data-id="1" data-cat="ai">
-        <img class="lead-img" src="https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80" alt="Artificial Intelligence">
-        <div class="lead-text">
-          <span class="tag">Artificial Intelligence</span>
-          <h2 class="lead-headline">Autonomous Reasoning Models Pass Formal Graduate Mathematics Benchmarks Without Hallucination</h2>
-          <p class="lead-desc">Frontier lab benchmarks reveal recursive self-correction architectures proving advanced topological theorems independently with zero human guidance.</p>
-          <div class="meta">September 2, 2026 • San Francisco, USA • 4 min read</div>
-        </div>
+      <div class="grid-header">
+        <h2 class="grid-title">Global Headlines</h2>
+        <span class="article-counter" id="articleCounter">Loading articles...</span>
       </div>
 
-      <h2 class="grid-section-title">Trending Global Dispatches</h2>
+      <div class="news-grid" id="newsGrid"></div>
 
-      <!-- STATIC HARDCODED GRID -->
-      <div class="news-grid" id="newsGrid">
-        
-        <!-- Story 2: ISRO -->
-        <article class="news-card" data-id="2" data-cat="isro">
-          <img class="card-img" src="https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=1200&q=80" alt="ISRO Moon Mission">
-          <div class="card-body">
-            <span class="tag">ISRO & Space</span>
-            <h3 class="card-title">ISRO Finalizes Chandrayaan-4 Dual-Module Lunar Polar Sample Return Architecture</h3>
-            <p class="card-desc">Radar telemetry verifies high-density ice beds at 89° south latitude as Bengaluru engineers prep autonomous surface drills.</p>
-            <div class="meta">September 1, 2026 • 5 min read</div>
-          </div>
-        </article>
-
-        <!-- Story 3: NVIDIA Silicon -->
-        <article class="news-card" data-id="3" data-cat="silicon">
-          <img class="card-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="NVIDIA Silicon">
-          <div class="card-body">
-            <span class="tag">NVIDIA & Tech</span>
-            <h3 class="card-title">TSMC and NVIDIA Enter 10-Angstrom Production Utilizing High-NA EUV Scanners</h3>
-            <p class="card-desc">Backside power delivery and liquid-metal thermal interfaces reshape enterprise AI cluster economics across global cloud datacenters.</p>
-            <div class="meta">August 31, 2026 • 4 min read</div>
-          </div>
-        </article>
-
-        <!-- Story 4: India Geopolitics & UPI -->
-        <article class="news-card" data-id="4" data-cat="india">
-          <img class="card-img" src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80" alt="India UPI Global">
-          <div class="card-body">
-            <span class="tag">India & Geopolitics</span>
-            <h3 class="card-title">India Expands Unified Payments Interface Network to 16 Central Bank Corridors</h3>
-            <p class="card-desc">Instant sovereign currency settlement accounts surge as Global South trading partners bypass legacy SWIFT transaction friction.</p>
-            <div class="meta">August 30, 2026 • 5 min read</div>
-          </div>
-        </article>
-
-        <!-- Story 5: Nuclear Fusion -->
-        <article class="news-card" data-id="5" data-cat="energy">
-          <img class="card-img" src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&q=80" alt="Nuclear Fusion">
-          <div class="card-body">
-            <span class="tag">Nuclear & Fusion</span>
-            <h3 class="card-title">High-Field Superconducting Tokamak Delivers Continuous Q>2 Energy Return</h3>
-            <p class="card-desc">Compact magnetic confinement surpasses 150-second continuous plasma stability, verifying commercial grid viability.</p>
-            <div class="meta">August 29, 2026 • 6 min read</div>
-          </div>
-        </article>
-
-        <!-- Story 6: Quantum Computing -->
-        <article class="news-card" data-id="6" data-cat="ai">
-          <img class="card-img" src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80" alt="Quantum Computing">
-          <div class="card-body">
-            <span class="tag">AI & Quantum</span>
-            <h3 class="card-title">Silicon Photonic Interconnect Couples Quantum Processors at Room Temperature</h3>
-            <p class="card-desc">Optical waveguides eliminate costly cryogenic refrigeration relays, clearing pathways for scalable modular quantum superclusters.</p>
-            <div class="meta">August 28, 2026 • 4 min read</div>
-          </div>
-        </article>
-
-        <!-- Story 7: Chess & Sports -->
-        <article class="news-card" data-id="7" data-cat="sports">
-          <img class="card-img" src="https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=1200&q=80" alt="Chess World Championship">
-          <div class="card-body">
-            <span class="tag">Global Sports & Chess</span>
-            <h3 class="card-title">FIDE Adopts Fast-Clock Tiebreak Rules to Reward Decisive Attacking Systems</h3>
-            <p class="card-desc">World championship cycle cuts down excessive classical draws, triggering massive excitement among younger grandmaster generations.</p>
-            <div class="meta">August 27, 2026 • 3 min read</div>
-          </div>
-        </article>
-
-        <!-- Story 8: SpaceX Starship -->
-        <article class="news-card" data-id="8" data-cat="isro">
-          <img class="card-img" src="https://images.unsplash.com/photo-1517976487507-5b3b4b45f917?auto=format&fit=crop&w=1200&q=80" alt="Deep Space Starship">
-          <div class="card-body">
-            <span class="tag">ISRO & Space</span>
-            <h3 class="card-title">Orbital Fuel Transfer Successfully Synchronized Between Dual Starship Boosters</h3>
-            <p class="card-desc">Autonomous cryogenic transfer at 27,000 km/h in microgravity confirms deep interplanetary transit architecture.</p>
-            <div class="meta">August 26, 2026 • 4 min read</div>
-          </div>
-        </article>
-
-        <!-- Story 9: Global Cricket World Cup -->
-        <article class="news-card" data-id="9" data-cat="sports">
-          <img class="card-img" src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80" alt="Cricket Stadium">
-          <div class="card-body">
-            <span class="tag">Global Sports & Cricket</span>
-            <h3 class="card-title">Global Olympic Committee Confirms 16-Nation Cricket Roster Ahead of Games</h3>
-            <p class="card-desc">Record international broadcast rights auction confirms cricket's rapid expansion into North American and European sporting markets.</p>
-            <div class="meta">August 25, 2026 • 3 min read</div>
-          </div>
-        </article>
-
+      <div class="pagination">
+        <button class="page-btn" id="prevBtn">← Previous</button>
+        <span style="align-self:center;font-size:0.9rem;" id="pageIndicator">Page 1</span>
+        <button class="page-btn" id="nextBtn">Next →</button>
       </div>
     </div>
 
-    <!-- INLINE READER VIEW -->
+    <!-- Reader Drawer -->
     <article id="readerView">
-      <button class="back-btn" id="closeReaderBtn">← Return to Dashboard</button>
+      <button class="back-btn" id="backBtn">← Return to Wire</button>
       <span class="tag" id="rTag"></span>
       <h1 class="reader-h1" id="rTitle"></h1>
-      <p class="reader-lead-text" id="rLead"></p>
-      <div class="meta" id="rMeta" style="margin-bottom:16px;"></div>
-      <img id="rImg" class="reader-img" src="" alt="">
-      <div class="reader-body-copy" id="rContent"></div>
+      <div class="meta" id="rMeta" style="margin-bottom:20px;"></div>
+      <img id="rImg" src="" alt="" style="width:100%;border-radius:8px;aspect-ratio:16/9;object-fit:cover;margin-bottom:20px;">
+      <p id="rLead" style="font-size:1.2rem;line-height:1.7;font-family:var(--font-serif);"></p>
+      <a id="rSource" class="source-link" href="#" target="_blank" rel="noopener noreferrer">Read Full Official Wire Report ↗</a>
     </article>
   </main>
 
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> The News Loom International. Verified intelligence dispatches cataloged from primary global labs.</p>
+      <p>© <span id="year"></span> The News Loom International. Continuously updated via automated multi-region RSS syndication.</p>
     </div>
   </footer>
 
   <script>
-    // Full Article Content Dictionary
-    const FULL_STORIES = {
-      1: {
-        tag: "Artificial Intelligence",
-        title: "Autonomous Reasoning Models Pass Formal Graduate Mathematics Benchmarks Without Hallucination",
-        lead: "Frontier lab benchmarks reveal recursive self-correction architectures proving advanced topological theorems independently with zero human guidance.",
-        meta: "September 2, 2026 • San Francisco, USA • 4 min read",
-        img: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
-        body: `<p>Evaluation labs across Silicon Valley and Zurich have confirmed that the newest class of inference-compute frontier models has scored 98.2% on graduate-level mathematics and formal coding benchmarks.</p>
-               <p>Rather than relying on statistical token guessing, the system executes real-time symbolic chain-of-thought verification using integrated Lean theorem provers. When a step fails mathematical rigor, the neural agent self-backtracks before returning output.</p>
-               <p>The development marks the transition of artificial intelligence from generative content creation to autonomous scientific exploration, with institutions preparing to deploy automated researchers for pharmaceutical protein modeling and cryptography verification.</p>`
-      },
-      2: {
-        tag: "ISRO & Space",
-        title: "ISRO Finalizes Chandrayaan-4 Dual-Module Lunar Polar Sample Return Architectur
+    let allArticles = [];
+    let currentFiltered = [];
+    let currentPage = 1;
+    const pageSize = 15;
+    let activeCat = "all";
+    let searchQ = "";
+
+    document.getElementById("mastheadDate").textContent = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Load 500+ Articles from articles.json
+    async function loadFeed() {
+      try {
+        const res = await fetch('articles.json');
+        if (!res.ok) throw new Error();
+        allArticles = await res.json();
+      } catch (e) {
+        // Fallback live sample
+        allArticles = [
+          { id: "1", cat: "tech", catLabel: "AI & Frontier Tech", title: "Autonomous Reasoning Architectures Reach 98% On Formal Mathematics Benchmarks", lead: "Frontier laboratories confirm multi-stage inference verification architectures solving complex proof verification.", date: "Today", url: "https://news.google.com", img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80" },
+          { id: "2", cat: "india", catLabel: "India", title: "ISRO Finalizes Trajectory Matrix for Chandrayaan-4 Lunar Polar Return Mission", lead: "Dual orbital rendezvous protocols validated to retrieve sub-surface core samples from south polar fissures.", date: "Today", url: "https://news.google.com", img: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1000&q=80" }
+        ];
+      }
+
+      if (allArticles.length > 0) {
+        document.getElementById("tickerText").textContent = `${allArticles[0].catLabel}: ${allArticles[0].title}`;
+      }
+      filterAndRender();
+    }
+
+    function filterAndRender() {
+      const q = searchQ.toLowerCase();
+      currentFiltered = allArticles.filter(item => {
+        const catMatch = activeCat === "all" || item.cat === activeCat;
+        const textMatch = !q || item.title.toLowerCase().includes(q) || (item.lead && item.lead.toLowerCase().includes(q));
+        return catMatch && textMatch;
+      });
+
+      currentPage = 1;
+      renderPage();
+    }
+
+    function renderPage() {
+      const grid = document.getElementById("newsGrid");
+      const total = currentFiltered.length;
+      document.getElementById("articleCounter").textContent = `${total} Articles Available`;
+
+      const start = (currentPage - 1) * pageSize;
+      const paginated = currentFiltered.slice(start, start + pageSize);
+
+      if (paginated.length === 0) {
+        grid.innerHTML = `<div style="grid-column:1/-1;padding:40px;text-align:center;color:var(--text-muted)">No matching dispatches found.</div>`;
+      } else {
+        grid.innerHTML = paginated.map(item => `
+          <article class="news-card" onclick="openReader('${item.id}')">
+            <img class="card-img" src="${item.img}" alt="${item.title}" loading="lazy">
+            <div class="card-body">
+              <span class="tag">${item.catLabel}</span>
+              <h3 class="card-title">${item.title}</h3>
+              <p class="card-desc">${item.lead || ''}</p>
+              <div class="meta">${item.date}</div>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      const totalPages = Math.ceil(total / pageSize) || 1;
+      document.getElementById("pageIndicator").textContent = `Page ${currentPage} of ${totalPages}`;
+      document.getElementById("prevBtn").disabled = currentPage === 1;
+      document.getElementById("nextBtn").disabled = currentPage >= totalPages;
+    }
+
+    // Reader Mode
+    window.openReader = function(id) {
+      const item = allArticles.find(a => a.id === id);
+      if (!item) return;
+
+      document.getElementById("rTag").textContent = item.catLabel;
+      document.getElementById("rTitle").textContent = item.title;
+      document.getElementById("rLead").textContent = item.lead || item.title;
+      document.getElementById("rMeta").textContent = `${item.date} • Syndicated Wire Report`;
+      document.getElementById("rImg").src = item.img;
+      document.getElementById("rSource").href = item.url;
+
+      document.getElementById("homeView").style.display = "none";
+      document.getElementById("readerView").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    document.getElementById("backBtn").onclick = () => {
+      document.getElementById("readerView").style.display = "none";
+      document.getElementById("homeView").style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    // Category Buttons
+    document.querySelectorAll(".cat-pill").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".cat-pill").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeCat = btn.dataset.cat;
+        filterAndRender();
+      });
+    });
+
+    // Instant Search
+    document.getElementById("searchBox").addEventListener("input", (e) => {
+      searchQ = e.target.value.trim();
+      filterAndRender();
+    });
+
+    // Pagination Click
+    document.getElementById("prevBtn").onclick = () => { if (currentPage > 1) { currentPage--; renderPage(); window.scrollTo({ top: 400, behavior: "smooth" }); } };
+    document.getElementById("nextBtn").onclick = () => { currentPage++; renderPage(); window.scrollTo({ top: 400, behavior: "smooth" }); };
+
+    // Theme Switch
+    document.getElementById("themeBtn").onclick = () => {
+      const isDark = document.body.getAttribute("data-theme") === "dark";
+      document.body.setAttribute("data-theme", isDark ? "light" : "dark");
+      document.getElementById("themeBtn").textContent = isDark ? "Dark Mode" : "Light Mode";
+    };
+
+    loadFeed();
+  </script>
+</body>
+</html>
