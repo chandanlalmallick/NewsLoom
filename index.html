@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="ag3esFh04E0jMVaZcougm8vA16PAviXBEFzWP78fXoM" />
 
-  <title>News Loom — Global Intelligence, Frontier Tech & World Affairs</title>
-  <meta name="description" content="Independent global news dashboard covering artificial intelligence, quantum breakthroughs, energy transitions, deep space discovery, and geopolitics.">
+  <title>News Loom — Global Intelligence, Geopolitics, AI & Markets</title>
+  <meta name="description" content="Live global intelligence dossier tracking artificial intelligence frontier models, semiconductor supply chains, deep space exploration, and macroeconomic shifts.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://chandanlalmallick.github.io/NewsLoom/">
 
-  <!-- Fonts & Layout -->
+  <!-- Editorial Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -21,27 +21,27 @@
       --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       --font-brand: 'Cinzel', serif;
 
-      --bg-base: #f9f8f5;
+      --bg-base: #f7f6f2;
       --bg-card: #ffffff;
-      --bg-subtle: #f0eee9;
-      --text-main: #141518;
-      --text-muted: #5e626a;
-      --border: #dfddd6;
-      --accent: #b82323;
-      --accent-hover: #911919;
-      --shadow: 0 4px 18px rgba(0,0,0,0.06);
+      --bg-subtle: #eceae3;
+      --text-main: #111215;
+      --text-muted: #565a63;
+      --border: #dcd9d0;
+      --accent: #c92a2a;
+      --accent-hover: #a61e1e;
+      --shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
 
     [data-theme="dark"] {
-      --bg-base: #0f1013;
-      --bg-card: #16181d;
-      --bg-subtle: #20232a;
-      --text-main: #f2f4f8;
-      --text-muted: #9aa0ac;
-      --border: #292d36;
-      --accent: #e63946;
-      --accent-hover: #ff5263;
-      --shadow: 0 4px 20px rgba(0,0,0,0.4);
+      --bg-base: #0c0d10;
+      --bg-card: #14161b;
+      --bg-subtle: #1c1f26;
+      --text-main: #f3f5f8;
+      --text-muted: #9aa1ad;
+      --border: #262a33;
+      --accent: #ff4d4f;
+      --accent-hover: #ff7875;
+      --shadow: 0 4px 24px rgba(0,0,0,0.5);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -55,7 +55,7 @@
 
     .container {
       width: 92%;
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
     }
 
@@ -63,18 +63,18 @@
     .masthead {
       background: var(--bg-card);
       border-bottom: 2px solid var(--text-main);
-      padding: 14px 0 20px;
+      padding: 12px 0 18px;
     }
     .masthead-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.78rem;
-      letter-spacing: 0.05em;
+      font-size: 0.76rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--text-muted);
       border-bottom: 1px solid var(--border);
-      padding-bottom: 10px;
+      padding-bottom: 8px;
     }
     .theme-btn {
       background: transparent;
@@ -84,18 +84,19 @@
       color: var(--text-main);
       cursor: pointer;
       font-size: 0.75rem;
+      font-weight: 600;
     }
     .masthead-center {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-top: 18px;
+      margin-top: 16px;
       flex-wrap: wrap;
       gap: 16px;
     }
     .brand-name {
       font-family: var(--font-brand);
-      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-size: clamp(2rem, 5vw, 3.4rem);
       line-height: 1;
       letter-spacing: 0.04em;
     }
@@ -105,16 +106,16 @@
       margin-top: 6px;
     }
 
-    /* Search */
+    /* Search Box */
     .search-wrapper {
       display: flex;
       align-items: center;
       background: var(--bg-subtle);
       border: 1px solid var(--border);
       border-radius: 6px;
-      padding: 8px 12px;
+      padding: 8px 14px;
       width: 100%;
-      max-width: 320px;
+      max-width: 340px;
     }
     .search-wrapper input {
       background: transparent;
@@ -123,10 +124,10 @@
       color: var(--text-main);
       font-size: 0.88rem;
       width: 100%;
-      margin-left: 6px;
+      margin-left: 8px;
     }
 
-    /* Categories */
+    /* Navigation Bar */
     .nav-bar {
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
@@ -136,41 +137,74 @@
     }
     .nav-scroll {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       overflow-x: auto;
-      padding: 10px 0;
+      padding: 8px 0;
       scrollbar-width: none;
     }
     .nav-scroll::-webkit-scrollbar { display: none; }
     .cat-pill {
       background: transparent;
       border: none;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: 600;
       color: var(--text-muted);
       padding: 6px 12px;
       border-radius: 4px;
       cursor: pointer;
       white-space: nowrap;
+      transition: all 0.2s;
     }
     .cat-pill.active, .cat-pill:hover {
       background: var(--bg-subtle);
       color: var(--accent);
     }
 
-    /* Featured Lead */
+    /* Live Intelligence Ticker */
+    .ticker-bar {
+      background: var(--bg-subtle);
+      border-bottom: 1px solid var(--border);
+      padding: 8px 0;
+      font-size: 0.8rem;
+    }
+    .ticker-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .ticker-tag {
+      background: var(--accent);
+      color: #ffffff;
+      padding: 2px 6px;
+      font-weight: 700;
+      border-radius: 3px;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+    .ticker-msg {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Featured Lead Story */
     .lead-box {
       display: grid;
-      grid-template-columns: 1.3fr 1fr;
+      grid-template-columns: 1.4fr 1fr;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 8px;
       margin-top: 24px;
       overflow: hidden;
       cursor: pointer;
-      transition: box-shadow 0.2s;
+      transition: box-shadow 0.2s, transform 0.2s;
     }
-    .lead-box:hover { box-shadow: var(--shadow); }
+    .lead-box:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
     .lead-img {
       aspect-ratio: 16 / 9;
       width: 100%;
@@ -178,14 +212,14 @@
       object-fit: cover;
     }
     .lead-text {
-      padding: 24px;
+      padding: 26px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
     .tag {
       color: var(--accent);
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -193,29 +227,30 @@
     }
     .lead-headline {
       font-family: var(--font-serif);
-      font-size: clamp(1.4rem, 2.2vw, 2rem);
-      line-height: 1.25;
+      font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+      line-height: 1.22;
       margin-bottom: 12px;
     }
     .lead-desc {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 14px;
+      font-size: 0.96rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
     }
     .meta { font-size: 0.78rem; color: var(--text-muted); }
 
     /* Secondary Grid */
     .grid-section-title {
       font-family: var(--font-brand);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       margin: 36px 0 16px;
       border-bottom: 1px solid var(--border);
       padding-bottom: 8px;
     }
     .news-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
     }
     .news-card {
       background: var(--bg-card);
@@ -225,36 +260,40 @@
       display: flex;
       flex-direction: column;
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.2s;
     }
-    .news-card:hover { transform: translateY(-3px); }
+    .news-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
     .card-img {
       width: 100%;
       aspect-ratio: 16 / 10;
       object-fit: cover;
     }
     .card-body {
-      padding: 16px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
     .card-title {
       font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       line-height: 1.35;
       margin: 6px 0 10px;
     }
     .card-desc {
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
       flex-grow: 1;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
+      line-height: 1.5;
     }
 
     /* Article Reader Mode */
     #readerView {
-      max-width: 780px;
+      max-width: 800px;
       margin: 30px auto;
       display: none;
     }
@@ -273,24 +312,27 @@
     }
     .reader-h1 {
       font-family: var(--font-serif);
-      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
-      line-height: 1.2;
-      margin: 10px 0 14px;
+      font-size: clamp(1.9rem, 3.8vw, 2.9rem);
+      line-height: 1.18;
+      margin: 10px 0 16px;
     }
     .reader-lead-text {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--text-muted);
       margin-bottom: 18px;
+      line-height: 1.5;
     }
     .reader-img {
       width: 100%;
       border-radius: 8px;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
       margin-bottom: 24px;
     }
     .reader-body-copy {
       font-family: var(--font-serif);
-      font-size: 1.15rem;
-      line-height: 1.8;
+      font-size: 1.18rem;
+      line-height: 1.85;
     }
     .reader-body-copy p { margin-bottom: 20px; }
 
@@ -304,7 +346,7 @@
       text-align: center;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 800px) {
       .lead-box { grid-template-columns: 1fr; }
       .search-wrapper { max-width: 100%; }
     }
@@ -322,10 +364,13 @@
       <div class="masthead-center">
         <div>
           <h1 class="brand-name">THE NEWS LOOM</h1>
-          <p class="brand-sub">Independent Global Dossier • Technology, Science & World Systems</p>
+          <p class="brand-sub">Independent Global Wire • Artificial Intelligence, Geopolitics & Deep Technology</p>
         </div>
         <div class="search-wrapper">
-          <input type="search" id="searchBar" placeholder="Search dispatches...">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="search" id="searchBar" placeholder="Search India, NVIDIA, AI, Space, Markets...">
         </div>
       </div>
     </div>
@@ -334,29 +379,39 @@
   <nav class="nav-bar">
     <div class="container">
       <div class="nav-scroll" id="catNav">
-        <button class="cat-pill active" data-cat="all">All Topics</button>
-        <button class="cat-pill" data-cat="tech">AI & Quantum</button>
-        <button class="cat-pill" data-cat="science">Deep Space</button>
-        <button class="cat-pill" data-cat="climate">Energy & Fusion</button>
-        <button class="cat-pill" data-cat="markets">Semiconductors</button>
+        <button class="cat-pill active" data-cat="all">All Dispatches</button>
+        <button class="cat-pill" data-cat="ai">🤖 AI & LLMs</button>
+        <button class="cat-pill" data-cat="geopolitics">🌍 World Affairs & India</button>
+        <button class="cat-pill" data-cat="space">🚀 Deep Space</button>
+        <button class="cat-pill" data-cat="markets">📈 Tech & Silicon Markets</button>
+        <button class="cat-pill" data-cat="defense">🛡 Defense & Energy</button>
+        <button class="cat-pill" data-cat="sports">🏆 Global Sports</button>
       </div>
     </div>
   </nav>
+
+  <div class="ticker-bar">
+    <div class="container ticker-inner">
+      <span class="ticker-tag">WIRE</span>
+      <span class="ticker-msg" id="tickerMsg">Updating live dispatches...</span>
+    </div>
+  </div>
 
   <main class="container">
     <!-- DASHBOARD VIEW -->
     <div id="homeView">
       <div id="featuredBox"></div>
-      <h2 class="grid-section-title">Latest Intelligence Dispatches</h2>
+      <h2 class="grid-section-title">Global Headlines & Deep Analysis</h2>
       <div class="news-grid" id="newsGrid"></div>
-      <div id="emptyMessage" style="display:none;padding:40px 0;text-align:center;color:var(--text-muted);">
-        No articles match your search criteria.
+      <div id="emptyMessage" style="display:none;padding:50px 0;text-align:center;color:var(--text-muted);">
+        <h3>No matching briefings found.</h3>
+        <p style="margin-top:6px;">Try broader terms like "ISRO", "AI", "NVIDIA", "India", or "Energy".</p>
       </div>
     </div>
 
     <!-- INLINE READER VIEW -->
     <article id="readerView">
-      <button class="back-btn" id="closeReaderBtn">← Back to Dashboard</button>
+      <button class="back-btn" id="closeReaderBtn">← Return to Dashboard</button>
       <span class="tag" id="rTag"></span>
       <h1 class="reader-h1" id="rTitle"></h1>
       <p class="reader-lead-text" id="rLead"></p>
@@ -368,176 +423,105 @@
 
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> The News Loom International. All reports cataloged and indexed.</p>
+      <p>© <span id="year"></span> The News Loom International. Sourced from primary wires, verified labs, and research consortiums.</p>
     </div>
   </footer>
 
   <script>
-    // Embedded Data Set with high-res Unsplash editorial CDN images
+    // 12 High-Interest, Viral Real-World Topics
     const STORIES = [
       {
         id: 1,
-        cat: "tech",
-        catLabel: "AI & Quantum",
-        title: "Monolithic Silicon Optical Interconnect Transmits Quantum States at Room Temperature",
-        lead: "Engineers successfully transmit entangled photon pairs across ordinary fiber networks without cryo-cooling degradation.",
+        cat: "ai",
+        catLabel: "Artificial Intelligence",
+        title: "Autonomous Reasoning Models Pass Formal Graduate Mathematics Benchmarks Without Hallucination",
+        lead: "Frontier lab benchmarks reveal recursive self-correction architectures proving advanced topological theorems independently.",
         date: "September 2, 2026",
-        loc: "Geneva, Switzerland",
+        loc: "San Francisco, USA",
         time: "4 min read",
-        img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
-        body: `<p>Researchers have confirmed room-temperature photonic transmission of entangled states on consumer-grade silicon waveguides, bridging the thermal divide that historically confined quantum links to liquid helium environments.</p>
-               <p>By modulating trapped ions through high-frequency optical wave-guides, data fidelity remained above 99.4% over benchmark distances. The achievement paves the path for modular data centers to network quantum clusters using standard optical fiber backbones.</p>`
+        img: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Evaluation labs across Silicon Valley and Zurich have confirmed that the newest class of inference-compute frontier models has scored 98.2% on graduate-level mathematics and formal coding benchmarks.</p>
+               <p>Rather than relying on statistical token guessing, the system executes real-time symbolic chain-of-thought verification using integrated Lean theorem provers. When a step fails mathematical rigor, the neural agent self-backtracks before returning output.</p>
+               <p>The development marks the transition of artificial intelligence from generative content creation to autonomous scientific exploration, with institutions preparing to deploy automated researchers for pharmaceutical protein modeling and cryptography verification.</p>`
       },
       {
         id: 2,
-        cat: "science",
-        catLabel: "Deep Space",
-        title: "Spectrometry Confirms Complex Hydrocarbon Chains Emanating from Europa Plumes",
-        lead: "Deep space probe skimming Jupiter's frozen moon registers organic signatures and elevated saline levels.",
+        cat: "space",
+        catLabel: "Deep Space & ISRO",
+        title: "ISRO Prepares Next Lunar Sample Return Lander as Chandrayaan Payloads Confirm Polar Volatiles",
+        lead: "Deep radar telemetry from lunar orbiters confirms extensive sub-surface ice sheets tucked inside permanently shadowed craters.",
         date: "September 1, 2026",
-        loc: "Pasadena, USA",
+        loc: "Bengaluru, India",
         time: "5 min read",
         img: "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=1200&q=80",
-        body: `<p>Deep-space planetary telemetry transmitted across the Deep Space Network has confirmed dense concentrations of long-chain hydrocarbons within cryovolcanic plumes venting from Europa's southern polar fissures.</p>
-               <p>The discovery allows direct sampling of subsurface oceanic material without executing complex landing or drilling drills. Planetary scientists noted that the chemical balance represents an active thermodynamic engine conducive to prebiotic chemistry.</p>`
+        body: `<p>The Indian Space Research Organisation has finalized trajectory models for its upcoming lunar sample retrieval deployment following verified spectral confirmations of subsurface volatile reserves at 89 degrees south latitude.</p>
+               <p>The robotic payload will deploy a dual-stage drill mechanism designed to preserve cryogenic volatiles in vacuum containers before launching a return vehicle back to Earth orbit.</p>
+               <p>International space agencies are closely coordinating telemetry agreements, recognizing that long-term manned lunar habitats depend directly on tapping these polar hydrogen deposits for fuel synthesis.</p>`
       },
       {
         id: 3,
-        cat: "climate",
-        catLabel: "Energy & Fusion",
-        title: "High-Field Tokamak Reaches Continuous Q>2 Energy Return in Commercial Trial",
-        lead: "Private reactor containment exceeds 120 seconds of sustained net positive plasma stability.",
-        date: "August 30, 2026",
-        loc: "Oxford, UK",
-        time: "6 min read",
-        img: "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
-        body: `<p>Operating magnetic field strengths exceeding 20 Tesla in compact geometries, the new superconducting reactor maintained stable deuterium-tritium plasma for over two minutes, delivering double the thermal energy supplied to initiate the burn.</p>
-               <p>The milestone transitions magnetic confinement from experimental physics to grid engineering, with power operators evaluating direct heat-exchanger coupling for baseline municipal transmission.</p>`
+        cat: "markets",
+        catLabel: "Silicon & Markets",
+        title: "Foundries Cross Sub-Nanometer Threshold as High-NA EUV Enters Full 24/7 Production",
+        lead: "Next-gen wafer scanners print 10-angstrom features, driving massive capital shifts across semiconductor equities.",
+        date: "August 31, 2026",
+        loc: "Hsinchu, Taiwan",
+        time: "4 min read",
+        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Commercial fabrication lines have commenced round-the-clock runs of logic chips patterned at atomic dimensions, utilizing second-generation High-NA EUV lithography systems.</p>
+               <p>The breakthrough overcomes quantum tunneling limits through novel gate-all-around nanosheet architectures and backside power delivery networks. The architectural overhaul reduces chip operational temperatures by up to 25% under peak datacenter workloads.</p>
+               <p>Hardware suppliers project that dominance over this specialized chemical and optical supply chain will determine datacenter computational supremacy through the end of the decade.</p>`
       },
       {
         id: 4,
-        cat: "markets",
-        catLabel: "Semiconductors",
-        title: "Foundries Enter the Sub-Nanometer Era as High-NA EUV Enters Full Production",
-        lead: "Commercial fabrication shifts to atomic-scale gate patterning, reshaping global compute supply lines.",
+        cat: "geopolitics",
+        catLabel: "Geopolitics",
+        title: "India Expands Digital Public Infrastructure Framework to 15 New Central Bank Alliances",
+        lead: "Cross-border real-time settlements surge as emerging markets bypass legacy SWIFT clearing channels.",
+        date: "August 30, 2026",
+        loc: "New Delhi, India",
+        time: "5 min read",
+        img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Multilateral agreements ratified this week expand instant sovereign currency settlement frameworks between India and over a dozen partner economies across the Global South and the Middle East.</p>
+               <p>By routing trade settlements directly through interconnected Unified Payments Interfaces and national central bank digital ledgers, participating states have reduced cross-border friction costs by nearly 80%.</p>
+               <p>Financial analysts note the strategic shift significantly reduces dependence on legacy dollar clearing correspondent banks for bilateral agricultural and energy transactions.</p>`
+      },
+      {
+        id: 5,
+        cat: "defense",
+        catLabel: "Clean Power & Fusion",
+        title: "High-Field Superconducting Tokamak Delivers Q>2 Net Energy in Continuous Power Run",
+        lead: "Commercial magnetic confinement sustains 150-second stable burning plasma, clearing engineering hurdles for grid integration.",
+        date: "August 29, 2026",
+        loc: "Oxford, UK",
+        time: "6 min read",
+        img: "https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Operating compact high-temperature superconducting (HTS) magnets above 21 Tesla, private research reactors have sustained deuterium-tritium reactions producing double the heat energy invested into initial heating.</p>
+               <p>Unlike massive historical megaprojects, the compact vessel topology lowers capital construction estimates to numbers comparable with modern nuclear fission plants.</p>
+               <p>Grid transmission consortia have already signed preliminary interconnection pacts to evaluate pulsed baseline injection tests into municipal energy networks.</p>`
+      },
+      {
+        id: 6,
+        cat: "ai",
+        catLabel: "Quantum Computing",
+        title: "Silicon Photonic Interconnect Connects Quantum Clusters at Room Temperature",
+        lead: "Optical waveguides eliminate cryogenic bottlenecks, clearing the path for multi-rack modular quantum supercomputers.",
         date: "August 28, 2026",
-        loc: "Hsinchu, Taiwan",
+        loc: "Geneva, Switzerland",
+        time: "4 min read",
+        img: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Physicists have demonstrated continuous photonic transfer of entangled quantum states over standard telecommunication fiber without requiring dilution refrigeration relays.</p>
+               <p>The achievement dismantles one of quantum technology's most severe barriers: interconnecting distinct cryogenic processor boxes without introducing destructive thermal noise.</p>
+               <p>Cloud server operators project distributed quantum clusters will run complex protein folding simulations side-by-side with conventional GPU servers in industrial environments.</p>`
+      },
+      {
+        id: 7,
+        cat: "markets",
+        catLabel: "Global Markets",
+        title: "Global Central Banks Rotate Historic Gold Reserves into Diversified Tangible Assets",
+        lead: "Sovereign balance sheets shift reserves toward strategic raw metals and domestic currency agreements.",
+        date: "August 27, 2026",
+        loc: "London, UK",
         time: "3 min read",
-        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-        body: `<p>Sub-nanometer logic node fabrication has commenced, using second-generation High-NA Extreme Ultraviolet lithography scanners to pattern circuits near atomic boundaries.</p>
-               <p>The unprecedented transistor density necessitates backside power delivery and direct liquid metal thermal diffusion to manage energetic workloads across next-generation neural architecture clusters.</p>`
-      }
-    ];
-
-    let activeFilter = "all";
-    let searchString = "";
-
-    const homeView = document.getElementById("homeView");
-    const readerView = document.getElementById("readerView");
-    const featuredBox = document.getElementById("featuredBox");
-    const newsGrid = document.getElementById("newsGrid");
-    const emptyMsg = document.getElementById("emptyMessage");
-
-    // Initialize dates
-    document.getElementById("currentDate").textContent = new Date().toLocaleDateString("en-US", {
-      weekday: "long", year: "numeric", month: "long", day: "numeric"
-    });
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Render Logic
-    function render() {
-      const q = searchString.toLowerCase();
-      const filtered = STORIES.filter(item => {
-        const catMatch = activeFilter === "all" || item.cat === activeFilter;
-        const textMatch = !q || item.title.toLowerCase().includes(q) || item.lead.toLowerCase().includes(q);
-        return catMatch && textMatch;
-      });
-
-      if (filtered.length === 0) {
-        featuredBox.innerHTML = "";
-        newsGrid.innerHTML = "";
-        emptyMsg.style.display = "block";
-        return;
-      }
-      emptyMsg.style.display = "none";
-
-      // Lead Feature
-      const lead = filtered[0];
-      featuredBox.innerHTML = `
-        <div class="lead-box" onclick="showStory(${lead.id})">
-          <img class="lead-img" src="${lead.img}" alt="${lead.title}">
-          <div class="lead-text">
-            <span class="tag">${lead.catLabel}</span>
-            <h2 class="lead-headline">${lead.title}</h2>
-            <p class="lead-desc">${lead.lead}</p>
-            <div class="meta">${lead.date} • ${lead.loc} • ${lead.time}</div>
-          </div>
-        </div>
-      `;
-
-      // Other Stories
-      const others = filtered.slice(1);
-      newsGrid.innerHTML = others.map(item => `
-        <article class="news-card" onclick="showStory(${item.id})">
-          <img class="card-img" src="${item.img}" alt="${item.title}">
-          <div class="card-body">
-            <span class="tag">${item.catLabel}</span>
-            <h3 class="card-title">${item.title}</h3>
-            <p class="card-desc">${item.lead}</p>
-            <div class="meta">${item.date} • ${item.time}</div>
-          </div>
-        </article>
-      `).join("");
-    }
-
-    // Reader Switch
-    window.showStory = function(id) {
-      const item = STORIES.find(s => s.id === id);
-      if (!item) return;
-
-      document.getElementById("rTag").textContent = item.catLabel;
-      document.getElementById("rTitle").textContent = item.title;
-      document.getElementById("rLead").textContent = item.lead;
-      document.getElementById("rMeta").textContent = `${item.date} • ${item.loc} • ${item.time}`;
-      document.getElementById("rImg").src = item.img;
-      document.getElementById("rContent").innerHTML = item.body;
-
-      homeView.style.display = "none";
-      readerView.style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    document.getElementById("closeReaderBtn").onclick = function() {
-      readerView.style.display = "none";
-      homeView.style.display = "block";
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
-
-    // Category Click Handling
-    document.querySelectorAll(".cat-pill").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".cat-pill").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        activeFilter = btn.dataset.cat;
-        render();
-      });
-    });
-
-    // Search Input Handling
-    document.getElementById("searchBar").addEventListener("input", (e) => {
-      searchString = e.target.value.trim();
-      render();
-    });
-
-    // Theme Switch
-    document.getElementById("themeSwitch").addEventListener("click", () => {
-      const isDark = document.body.getAttribute("data-theme") === "dark";
-      document.body.setAttribute("data-theme", isDark ? "light" : "dark");
-      document.getElementById("themeSwitch").textContent = isDark ? "Dark Mode" : "Light Mode";
-    });
-
-    // Initial render
-    render();
-  </script>
-</body>
-</html>
+        img: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+        body: `<p>Central bank purchase volumes of physical gold bullion and copper stockpiles have broken historical multi-decade records for the third consecutive f
